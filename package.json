@@ -1,0 +1,33 @@
+{
+  "name": "equation-solver",
+  "version": "1.0.0",
+  "description": "A program able to solve and graphic any kind of equation. But in this first iteration, only solving linear equations",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "start": "webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IrvingJuarez/equation-solver.git"
+  },
+  "keywords": [
+    "maths",
+    "javascript",
+    "SPA",
+    "webpack"
+  ],
+  "author": "Irving Juárez <irvingjuarez274@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IrvingJuarez/equation-solver/issues"
+  },
+  "homepage": "https://github.com/IrvingJuarez/equation-solver#readme",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
