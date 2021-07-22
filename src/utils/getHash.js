@@ -1,10 +1,10 @@
 const getHash = () => {
-    let hash = location.pathname;
-
-    if(hash == "/"){
+    let validHash = location.hash
+    if(validHash == ""){
         return "/"
     }else{
-        return hash
+        return validHash.slice(1, validHash.length - 1)
     }
 }
+
 export default getHash;
