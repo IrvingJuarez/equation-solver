@@ -1,0 +1,97 @@
+:root{
+    --mainFont: 'Montserrat', sans-serif;
+    --secondFont: 'Roboto', sans-serif;
+    --clearColor: #FFFFFF;
+    --mainColor: #F4F4F4;
+    --darkColor: #000000;
+    --contrastColor: #10AFC8;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+div{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+main{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--mainColor);
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    padding: 0 9px;
+    background-color: var(--clearColor);
+}
+header img{
+    width: 20px;
+    height: 20px;
+}
+header nav{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: fit-content;
+    font-family: var(--secondFont);
+    font-size: 1.8rem;
+}
+header nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+header nav ul li:nth-child(1){
+    margin-right: 20px;
+}
+header nav ul li a{
+    font-weight: 700;
+    text-decoration: none;
+}
+.arrowContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 13px;
+}
+.headerArrow{
+    width: 26px;
+    height: 100%;
+    background-image: url("../assets/images/arrowUp.svg");
+}
+
+@media screen and (min-width: 500px){
+    header{
+        height: 75px;
+        padding: 0 30px;
+    }
+    header img{
+        width: 30px;
+        height: 30px;
+    }
+    header nav{
+        font-size: 2.4rem;
+    }
+    header nav ul li:nth-child(1){
+        margin-right: 30px;
+    }
+    .arrowContainer{
+        height: 17px;
+    }
+}

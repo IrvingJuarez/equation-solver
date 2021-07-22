@@ -6,8 +6,10 @@ const Header = () => {
                 <li><a href="/">Equations</a></li>
                 <li><a href="#/about/">About</a></li>
             </ul>
+            <section class="arrowContainer">
+                <div class="headerArrow"></div>
+            </section>
         </nav>
-        <div class="header-arrow"></div>
     `
 
     return view;
