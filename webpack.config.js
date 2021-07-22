@@ -1,5 +1,6 @@
-const path = require(path)
+const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
 
 module.exports = {
     entry: "./src/index.js",
@@ -14,7 +15,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: true,
             template: "./public/index.html",
-            filename: "./main.html"
+            filename: "./index.html"
+        }),
+        new CopyPlugin({
+            patterns: [
+                {from: "./src/assets", to: "./assets"}
+            ]
         })
     ],
     module: {
@@ -24,7 +30,7 @@ module.exports = {
                 use: ["css-loader"]
             },
             {
-                test: /\.svg/,
+                test: /\.(svg|jpg)/,
                 type: "asset/resource"
             }
         ]
