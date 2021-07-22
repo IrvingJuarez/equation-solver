@@ -5,8 +5,8 @@ import Error404 from "../pages/Error404"
 import getHash from "../utils/getHash"
 
 const routes = {
-    "/": Equations,
-    "/about": About
+    "": Equations,
+    "#/about/": About
 }
 
 const onNavigate = (hash, render) => {
@@ -24,7 +24,12 @@ const router = async () => {
     const content = null || document.getElementById("content")
 
     header.innerHTML = await Header()
-    let render = routes[window.location.pathname] ? routes[window.location.pathname] : Error404
+    let render
+    if(routes[location.hash]){
+        render = routes[location.hash]
+    }else{
+        render = Error404
+    }
     content.innerHTML = render()
 }
 
