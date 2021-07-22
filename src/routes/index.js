@@ -9,15 +9,23 @@ const routes = {
     "/about": About
 }
 
+const onNavigate = (hash, render) => {
+    window.history.pushState(
+        {},
+        hash,
+        window.location.origin + hash
+    )
+
+    render.innerHTML = routes[hash] ? routes[hash] : Error404
+}
+
 const router = async () => {
     const header = null || document.getElementById("mainHeader")
     const content = null || document.getElementById("content")
 
     header.innerHTML = await Header()
-
-    let hash = getHash()
-    let render = routes[hash] ? routes[hash] : Error404;
-    content.innerHTML = await render()
+    let render = routes[window.location.pathname] ? routes[window.location.pathname] : Error404
+    content.innerHTML = render()
 }
 
 export default router;
