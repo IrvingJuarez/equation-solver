@@ -1,1 +1,3 @@
-console.log("Praying for this first compilation to work")
+import router from "./routes"
+
+window.addEventListener("load", router)
