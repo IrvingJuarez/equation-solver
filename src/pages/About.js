@@ -49,7 +49,7 @@ const About = () => {
         </article>
         <h2>Why it is important to know how to solve linear equations?</h2>
         <p>Even when Equation Solver gives you the result of linear equations (so far), it is important to make sure you know what would be the result before to press the “Do the math” button</p>
-    `
+    `;
 
     return view
 }
