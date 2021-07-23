@@ -5,7 +5,7 @@
     --mainColor: #F4F4F4;
     --darkColor: #000000;
     --contrastColor: #10AFC8;
-    --spaceBetween: 20px;
+    --spaceBetween: 30px;
 }
 *{
     padding: 0;
@@ -82,27 +82,27 @@ header nav ul li a{
     flex-direction: column;
     align-items: center;
     min-width: 320px;
-    max-width: 500px;
+    max-width: 700px;
     height: auto;
-    margin: 50px auto;
+    margin: 25% auto;
 }
 .content h2{
     font-family: var(--mainFont);
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: var(--darkColor);
     margin-bottom: var(--spaceBetween);
 }
 .content input{
-    width: 229px;
-    height: 30px;
+    width: 90%;
+    height: auto;
     font-family: var(--mainFont);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--darkColor);
     padding: 9px;
     margin-bottom: var(--spaceBetween);
     border: none;
-    outline: none;
+    outline-color: var(--contrastColor);
     background-color: var(--clearColor);
     border-radius: 15px;
 }
@@ -117,19 +117,20 @@ header nav ul li a{
     align-items: center;
     justify-content: center;
     width: 229px;
-    height: 31px;
+    height: auto;
     font-family: var(--secondFont);
     font-weight: bold;
     font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.5);
     border-radius: 15px;
     background-color: var(--contrastColor);
+    padding: 9px;
 }
 .result, .aftermath{
     display: none;
 }
 
-@media screen and (min-width: 500px){
+@media screen and (min-width: 700px){
     header{
         height: 75px;
         padding: 0 30px;
@@ -151,22 +152,24 @@ header nav ul li a{
         margin: 80px auto;
     }
     .content h2{
-        font-size: 3rem;
+        font-size: 4.4rem;
         margin-bottom: 40px;
     }
     .content input{
-        width: 500px;
-        height: 43px;
-        font-size: 1.8rem;
-        margin-bottom: 40px;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        font-size: 2rem;
+        margin-bottom: 60px;
     }
     .interpretation{
         font-size: 2rem;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
     }
     .doMathButton{
         width: 344px;
-        height: 43px;
-        font-size: 2rem;
+        height: auto;
+        padding: 12px;
+        font-size: 2.2rem;
     }
 }
