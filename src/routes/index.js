@@ -24,7 +24,7 @@ const router = async () => {
     const content = null || document.getElementById("content")
 
     header.innerHTML = await Header()
-    content.innerHTML = Equations()
+    content.innerHTML = About()
     // let hash = getHash()
     // let render
     // if(routes[hash]){

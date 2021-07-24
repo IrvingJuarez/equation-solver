@@ -1,0 +1,28 @@
+:root{
+    --marginStd: 10px;
+}
+
+.content{
+    margin: 20px auto;
+    align-items: flex-start;
+    padding: 9px;
+}
+.content h2{
+    font-size: 2.3rem;
+    margin-bottom: var(--marginStd);
+}
+.content p{
+    font-family: var(--mainFont);
+    font-size: 1.6rem;
+    margin-bottom: var(--marginStd);
+}
+.content article{
+    width: 100%;
+    background-color: var(--clearColor);
+    padding: 9px;
+}
+.content article h3{
+    font-family: var(--secondFont);
+    font-size: 1.8rem;
+    margin-bottom: var(--marginStd);
+}
