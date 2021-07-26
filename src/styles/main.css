@@ -79,7 +79,6 @@ header nav ul li a{
 }
 .content{
     width: 100%;
-    min-height: 100vh;
 }
 
 @media screen and (min-width: 700px){
