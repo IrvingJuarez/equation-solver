@@ -1,22 +1,14 @@
 import Header from "../templates/Header"
 import Equations from "../pages/Equations"
 import About from "../pages/About"
+import Contact from "../pages/Contact"
 import Error404 from "../pages/Error404"
 import getHash from "../utils/getHash"
 
 const routes = {
     "/": Equations,
-    "/about": About
-}
-
-const onNavigate = (hash, render) => {
-    window.history.pushState(
-        {},
-        hash,
-        window.location.origin + hash
-    )
-
-    render.innerHTML = routes[hash] ? routes[hash] : Error404
+    "/about": About,
+    "/contact": Contact
 }
 
 const router = async () => {
@@ -24,7 +16,6 @@ const router = async () => {
     const content = null || document.getElementById("content")
 
     header.innerHTML = await Header()
-    // content.innerHTML = await Equations()
     let hash = getHash()
     let render
     if(routes[hash]){

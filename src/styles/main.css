@@ -34,13 +34,18 @@ header{
     padding: 0 9px;
     background-color: var(--clearColor);
 }
-header img{
+header img, .hamburgerButton{
     width: 20px;
     height: 20px;
 }
+.hamburgerButton{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 header nav{
     position: relative;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     height: 100%;
@@ -54,7 +59,7 @@ header nav ul{
     justify-content: space-between;
     list-style: none;
 }
-header nav ul li:nth-child(1){
+header nav ul li:not(#last){
     margin-right: 20px;
 }
 header nav ul li a{
@@ -64,12 +69,12 @@ header nav ul li a{
 }
 .arrowContainer{
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     bottom: 0;
     left: 0;
-    width: 50%;
+    width: 33%;
     height: 13px;
 }
 .headerArrow{
@@ -79,6 +84,7 @@ header nav ul li a{
 }
 .content{
     width: 100%;
+    padding-bottom: 2px;
 }
 
 @media screen and (min-width: 700px){
@@ -90,13 +96,18 @@ header nav ul li a{
         width: 30px;
         height: 30px;
     }
+    .hamburgerButton{
+        display: none;
+    }
     header nav{
+        display: flex;
         font-size: 2.4rem;
     }
-    header nav ul li:nth-child(1){
+    header nav ul li:not(#last){
         margin-right: 30px;
     }
     .arrowContainer{
+        display: flex;
         height: 17px;
     }
 }
