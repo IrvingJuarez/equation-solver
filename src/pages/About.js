@@ -1,4 +1,4 @@
-import "../styles/about.css"
+import styles from "../styles/about.css"
 
 const About = () => {
     const view = `

@@ -24,15 +24,15 @@ const router = async () => {
     const content = null || document.getElementById("content")
 
     header.innerHTML = await Header()
-    content.innerHTML = About()
-    // let hash = getHash()
-    // let render
-    // if(routes[hash]){
-    //     render = routes[hash]
-    // }else{
-    //     render = Error404
-    // }
-    // content.innerHTML = await render()
+    content.innerHTML = await Equations()
+    let hash = getHash()
+    let render
+    if(routes[hash]){
+        render = routes[hash]
+    }else{
+        render = Error404
+    }
+    content.innerHTML = await render()
 }
 
 export default router;
