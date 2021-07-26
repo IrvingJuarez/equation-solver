@@ -1,0 +1,29 @@
+.error404Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20% auto;
+    font-family: var(--mainFont);
+}
+.error404Container h2{
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+}
+.error404Container p{
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+@media screen and (min-width: 700px){
+    .error404Container{
+        margin: 100px;
+    }
+    .error404Container h2{
+        font-size: 3.4rem;
+    }
+    .error404Container img{
+        width: 200px;
+        height: 200px;
+    }
+}

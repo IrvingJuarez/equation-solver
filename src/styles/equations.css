@@ -1,0 +1,79 @@
+.equationsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    max-width: 700px;
+    height: auto;
+    margin: 25% auto 100px auto;
+}
+.equationsContainer h2{
+    font-family: var(--mainFont);
+    font-weight: 400;
+    font-size: 2.4rem;
+    color: var(--darkColor);
+    margin-bottom: var(--spaceBetween);
+}
+.equationsContainer input{
+    width: 90%;
+    height: auto;
+    font-family: var(--mainFont);
+    font-size: 1.5rem;
+    color: var(--darkColor);
+    padding: 9px;
+    margin-bottom: var(--spaceBetween);
+    border: none;
+    outline-color: var(--contrastColor);
+    background-color: var(--clearColor);
+    border-radius: 15px;
+}
+.interpretation{
+    font-family: var(--mainFont);
+    font-size: 1.4rem;
+    margin-bottom: var(--spaceBetween);
+    color: rgba(black, 0.5);
+}
+.doMathButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 229px;
+    height: auto;
+    font-family: var(--secondFont);
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    background-color: var(--contrastColor);
+    padding: 9px;
+}
+.result, .aftermath{
+    display: none;
+}
+
+@media screen and (min-width: 700px){
+    .equationsContainer{
+        margin: 80px auto;
+    }
+    .equationsContainer h2{
+        font-size: 4.4rem;
+        margin-bottom: 40px;
+    }
+    .equationsContainer input{
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        font-size: 2rem;
+        margin-bottom: 60px;
+    }
+    .interpretation{
+        font-size: 2rem;
+        margin-bottom: 60px;
+    }
+    .doMathButton{
+        width: 344px;
+        height: auto;
+        padding: 12px;
+        font-size: 2.2rem;
+    }
+}
