@@ -5,6 +5,8 @@ import Contact from "../pages/Contact"
 import Error404 from "../pages/Error404"
 import getHash from "../utils/getHash"
 import moveArrow from "../utils/moveArrow"
+import displaySidebar from "../utils/displaySidebar"
+import hideSidebar from "../utils/hideSidebar"
 
 const routes = {
     "/": Equations,
@@ -26,6 +28,11 @@ const router = async () => {
         render = Error404
     }
     content.innerHTML = await render()
+
+    const barButton = document.querySelector(".hamburgerButton")
+    const closeButton = document.querySelector(".closeButton")
+    barButton.addEventListener("click", displaySidebar)
+    closeButton.addEventListener("click", hideSidebar)
 }
 
 export default router;

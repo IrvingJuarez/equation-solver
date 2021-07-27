@@ -21,6 +21,7 @@ div{
     background-repeat: no-repeat;
 }
 main{
+    position: relative;
     width: 100%;
     min-height: 100vh;
     background-color: var(--mainColor);
@@ -42,6 +43,8 @@ header img, .hamburgerButton{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    cursor: pointer;
+    transition: opacity 1s;
 }
 header nav{
     position: relative;
@@ -83,6 +86,34 @@ header nav ul li a{
     height: 100%;
     background-image: url("../assets/images/arrowUp.svg");
 }
+.sidebar{
+    position: absolute;
+    right: -100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 238px;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 5px 0 0 5px;
+    transition: right 1s;
+}
+.headerSidebar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 9px;
+    width: 100%;
+    height: 50px;
+}
+.closeButton{
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/closeButton.svg");
+}
 .content{
     width: 100%;
     padding-bottom: 2px;
@@ -110,5 +141,11 @@ header nav ul li a{
     .arrowContainer{
         display: flex;
         height: 17px;
+    }
+    .sidebar{
+        display: none;
+    }
+    .headerSidebar{
+        height: 75px;
     }
 }
