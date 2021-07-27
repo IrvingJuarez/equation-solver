@@ -88,7 +88,7 @@ header nav ul li a{
     background-image: url("../assets/images/arrowUp.svg");
 }
 .sidebar{
-    position: absolute;
+    position: fixed;
     right: -100%;
     top: 0;
     display: flex;

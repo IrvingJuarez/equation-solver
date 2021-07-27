@@ -19,8 +19,22 @@ const Contact = () => {
             </section>
             <section class="pinnedRepositories">
                 <h2>Pinned repositories on GitHub</h2>
-                <article class="repository"></article>
-                <article class="repository"></article>
+                <article class="repository">
+                    <div class="titleContainer">
+                        <img src="./assets/images/bookLogo.png">
+                        <h2>Title</h2>
+                    </div>
+                    <p>Description</p>
+                    <div class="lenguageContainer"><span></span> Lenguage</div>
+                </article>
+                <article class="repository">
+                    <div class="titleContainer">
+                        <img src="./assets/images/bookLogo.png">
+                        <h2>Title</h2>
+                    </div>
+                    <p>Description</p>
+                    <div class="lenguageContainer"><span></span> Lenguage</div>
+                </article>
             </section>
             <section class="activity">
                 <h2>Activity in the last year</h2>
