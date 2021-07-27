@@ -28,6 +28,11 @@
     margin-right: 9px;
     background-color: grey;
     border-radius: 50%;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/avatar3.jpg");
 }
 .titles h2{
     font-family: var(--mainFont);

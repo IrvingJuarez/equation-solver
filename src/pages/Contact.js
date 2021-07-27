@@ -10,9 +10,9 @@ const Contact = () => {
                     <h3>Fronted developer</h3>
                     <nav class="socialMedia">
                         <ul>
-                            <li><a href="#"><img></a></li>
-                            <li><a href="#"><img></a></li>
-                            <li><a href="#"><img></a></li>
+                            <li><a href="https://twitter.com/juarez1_irving"><img src="./assets/images/twitter.png"></a></li>
+                            <li><a href="https://github.com/IrvingJuarez/"><img src="./assets/images/github.png"></a></li>
+                            <li><a href="mailto: irvingjuarez274@gmail.com"><img src="./assets/images/mail.png"></a></li>
                         </ul>
                     </nav>
                 </div>

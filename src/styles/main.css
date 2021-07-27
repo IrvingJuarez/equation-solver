@@ -76,6 +76,7 @@ header nav ul li a{
     left: 0;
     width: 33%;
     height: 13px;
+    transition: left 1s;
 }
 .headerArrow{
     width: 26px;
