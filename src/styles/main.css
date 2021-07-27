@@ -25,6 +25,7 @@ main{
     width: 100%;
     min-height: 100vh;
     background-color: var(--mainColor);
+    overflow: hidden;
 }
 header{
     display: flex;
@@ -113,6 +114,29 @@ header nav ul li a{
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url("../assets/images/closeButton.svg");
+}
+.itemsSidebar{
+    width: 100%;
+    font-family: var(--secondFont);
+    font-weight: 500;
+    font-size: 1.9rem;
+}
+.itemsSidebar ul{
+    list-style: none;
+}
+.itemsSidebar ul li{
+    width: 80%;
+    padding: 12px;
+}
+.itemsSidebar a{
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+}
+.itemChosen{
+    background-image: linear-gradient(to right, black, transparent);
+}
+.itemChosen a{
+    color: var(--clearColor);
 }
 .content{
     width: 100%;
