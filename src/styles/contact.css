@@ -79,10 +79,11 @@
     height: 15px;
     margin-right: 9px;
 }
-.repository h2{
+.repository a{
     display: inline-block;
     font-family: var(--secondFont);
     font-size: 1.3rem;
+    text-decoration: none;
     color: var(--contrastColor);
 }
 .repository p{
@@ -175,7 +176,7 @@
     .activity h2{
         margin-bottom: 20px;
     }
-    .repository h2{
+    .repository a{
         font-size: 2rem;
     }
     .repository p{

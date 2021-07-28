@@ -1,6 +1,9 @@
 import styles from "../styles/contact.css"
+import getData from "../utils/getData"
 
-const Contact = () => {
+const Contact = async() => {
+    const pinnedRepos = ["Pacman-Remastered", "equation-solver"]
+    const reposInfo = await getData()
     const view = `
         <section class="contactContainer">
             <section class="info">
@@ -19,22 +22,21 @@ const Contact = () => {
             </section>
             <section class="pinnedRepositories">
                 <h2>Pinned repositories on GitHub</h2>
-                <article class="repository">
-                    <div class="titleContainer">
-                        <img src="./assets/images/bookLogo.png">
-                        <h2>Title</h2>
-                    </div>
-                    <p>Description</p>
-                    <div class="lenguageContainer"><span></span> Lenguage</div>
-                </article>
-                <article class="repository">
-                    <div class="titleContainer">
-                        <img src="./assets/images/bookLogo.png">
-                        <h2>Title</h2>
-                    </div>
-                    <p>Description</p>
-                    <div class="lenguageContainer"><span></span> Lenguage</div>
-                </article>
+                ${
+                    reposInfo.map(repo => {
+                        if(repo.name == pinnedRepos[0] || repo.name == pinnedRepos[1]){
+                            return `
+                            <article class="repository">
+                                <div class="titleContainer">
+                                    <img src="./assets/images/bookLogo.png">
+                                    <a href="${repo.html_url}">${repo.name}</a>
+                                </div>
+                                <p>${repo.description}</p>
+                                <div class="lenguageContainer"><span></span> ${repo.language}</div>
+                            </article>`
+                        }
+                    }).join("")
+                }
             </section>
             <section class="activity">
                 <h2>Activity in the last year</h2>
