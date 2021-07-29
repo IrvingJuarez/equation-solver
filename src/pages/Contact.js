@@ -4,6 +4,13 @@ import getData from "../utils/getData"
 const Contact = async() => {
     const pinnedRepos = ["Pacman-Remastered", "equation-solver"]
     const reposInfo = await getData()
+    const formatDate = (date) => {
+        let slicedDate = new Date(date.slice(0,10))
+        let time = date.slice(11, 16)
+        const newDate = new Intl.DateTimeFormat("en-EN").format(slicedDate)
+
+        return `${newDate} at ${time}`
+    }
     const view = `
         <section class="contactContainer">
             <section class="info">
@@ -32,7 +39,7 @@ const Contact = async() => {
                                     <a href="${repo.html_url}">${repo.name}</a>
                                 </div>
                                 <p>${repo.description}</p>
-                                <div class="lenguageContainer"><i>Latest update</i>: ${repo.updated_at}</div>
+                                <div class="lenguageContainer">Latest update: ${formatDate(repo.updated_at)}</div>
                             </article>`
                         }
                     }).join("")
