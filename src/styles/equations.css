@@ -36,7 +36,13 @@
     color: rgba(black, 0.5);
 }
 .divition{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0 4px;
+}
+.divition hr{
+    width: 100%;
 }
 .doMathButton{
     display: flex;
