@@ -32,7 +32,7 @@ const Contact = async() => {
                                     <a href="${repo.html_url}">${repo.name}</a>
                                 </div>
                                 <p>${repo.description}</p>
-                                <div class="lenguageContainer"><span></span> ${repo.language}</div>
+                                <div class="lenguageContainer"><i>Latest update</i>: ${repo.updated_at}</div>
                             </article>`
                         }
                     }).join("")
