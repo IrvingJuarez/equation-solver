@@ -1,15 +1,16 @@
-const div = `<div>
-    numberOne
-    <hr>
-    numberTwo
-</div>`
+const div = () => {
+    return `
+    <div class="divition">
+        num1
+        <hr>
+        num2
+    </div>
+    `
+}
 
 const getMatch = (string) => {
-    let regExp = /\d{1,}\/\d{1,}/g;
-    let matches = [...string.matchAll(regExp)]
-    let result = string.replace(regExp, div)
-
-    return result
+    let regExp = /\d{1,}\w?\/\d{1,}/g;
+    return string.replace(regExp, div)
 }
 
 const interpreter = () => {

@@ -28,10 +28,15 @@
     border-radius: 15px;
 }
 .interpretation{
+    display: flex;
+    align-items: center;
     font-family: var(--mainFont);
     font-size: 1.4rem;
     margin-bottom: var(--spaceBetween);
     color: rgba(black, 0.5);
+}
+.divition{
+    padding: 0 4px;
 }
 .doMathButton{
     display: flex;
