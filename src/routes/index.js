@@ -8,7 +8,6 @@ import moveArrow from "../utils/moveArrow"
 import displaySidebar from "../utils/displaySidebar"
 import hideSidebar from "../utils/hideSidebar"
 import chosenItem from "../utils/chosenItem"
-import interpreter from "../utils/interpreter"
 
 const routes = {
     "/": Equations,
@@ -37,7 +36,6 @@ const router = async () => {
 
     barButton.addEventListener("click", displaySidebar)
     closeButton.addEventListener("click", hideSidebar)
-    interpreter()
 }
 
 export default router;

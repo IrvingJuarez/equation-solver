@@ -1,9 +1,8 @@
 const interpreter = () => {
     let input = document.querySelector("input")
     let interpretation = document.querySelector(".interpretation")
-
-    input.addEventListener("input", (evt) => {
-        interpretation.textContent = input.value.toLowerCase()
+    input.addEventListener("input", () => {
+        interpretation.textContent = input.value
     })
 }
 
