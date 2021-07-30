@@ -6,7 +6,8 @@ const Equations = () => {
             <h2>Write a linear equation</h2>
             <input type="text" placeholder="Eg. 2x + 10 = 23x + 120"></input>
             <div class="interpretation">.</div>
-            <div type="button" class="doMathButton">Do the math</div>
+            <div class=" button doMathButton">Do the math</div>
+            <div class=" button tryAgainButton">Try again</div>
             <span id="result" class="result"></span>
             <section class="process aftermath">
                 <h3 id="process">See process</h3>

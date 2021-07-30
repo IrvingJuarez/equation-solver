@@ -46,7 +46,7 @@
 .divition hr{
     width: 100%;
 }
-.doMathButton{
+.button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,10 +55,19 @@
     font-family: var(--secondFont);
     font-weight: bold;
     font-size: 1.6rem;
-    color: rgba(255, 255, 255, 0.5);
     border-radius: 15px;
-    background-color: var(--contrastColor);
     padding: 9px;
+    margin: 9px;
+    transition: color 1s;
+}
+.doMathButton{
+    color: rgba(255, 255, 255, 0.5);
+    background-color: var(--contrastColor);
+}
+.tryAgainButton{
+    color: var(--contrastColor);
+    opacity: 0.5;
+    transition: border, opacity 1s;
 }
 .result, .aftermath{
     display: none;
@@ -83,7 +92,7 @@
         font-size: 2.2rem;
         margin-bottom: 60px;
     }
-    .doMathButton{
+    .button{
         width: 344px;
         height: auto;
         padding: 12px;
