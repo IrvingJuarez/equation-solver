@@ -33,7 +33,7 @@
     max-width: 100%;
     overflow-x: auto;
     font-family: var(--mainFont);
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     margin-bottom: var(--spaceBetween);
     color: rgba(black, 0.5);
 }
@@ -54,7 +54,7 @@
     height: auto;
     font-family: var(--secondFont);
     font-weight: bold;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     border-radius: 15px;
     padding: 9px;
     margin: 9px;
@@ -72,9 +72,9 @@
     border-style: solid;
     border-color: transparent;
 }
-.result, .aftermath{
-    display: none;
-}
+/* .result, .aftermath{
+    width: 100%;
+} */
 
 @media screen and (min-width: 700px){
     .equationsContainer{
@@ -92,7 +92,7 @@
         margin-bottom: 60px;
     }
     .interpretation{
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         margin-bottom: 60px;
     }
     .button{
