@@ -12,7 +12,7 @@ const div = (num1, num2) => {
 }
 
 const getMatch = (string) => {
-    let regExp = /\d{1,}\w?\/\d+/g;
+    let regExp = /[\-]?[\d{1,}]?[\w]?[\+\-\*]?[\d{1,1}]?[\-\+\*]?[\d{1,}]?[\(]?\d+[\(\)]?[\d{1,}]?[\(\)]?\w?\s?[\+\-\*]?\s?\d*\s?\/\s?\d+[\s\W]{1,1}/g;
 
     if(arr.length >= 1){
         string = string.substring(arr[0].length - (73 * i))
