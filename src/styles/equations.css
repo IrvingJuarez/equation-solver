@@ -68,6 +68,9 @@
     color: var(--contrastColor);
     opacity: 0.5;
     transition: border, opacity 1s;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
 }
 .result, .aftermath{
     display: none;

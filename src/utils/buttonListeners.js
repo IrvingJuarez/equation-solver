@@ -7,19 +7,19 @@ const isFieldEmpty = (value) => {
     let opacity, border, cursor
     if(value === ""){
         opacity = "0.5"
-        border = "none"
+        border = "transparent"
         cursor = "initial"
         interpretationField.textContent = "."
         button.removeEventListener("click", tryAgain)
     }else{
         opacity = "1"
-        border = "3px solid var(--contrastColor)"
+        border = "var(--contrastColor)"
         cursor = "pointer"
         button.addEventListener("click", tryAgain)
     }
 
     button.style.opacity = opacity
-    button.style.border = border
+    button.style.borderColor = border
     button.style.cursor = cursor
 }
 
