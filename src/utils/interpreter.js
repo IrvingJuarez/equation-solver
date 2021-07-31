@@ -11,7 +11,7 @@ const div = (num1, num2) => {
     `
 }
 
-const getMatch = (string) => {
+const getMatch = (string, arr) => {
     let regExp = /[\-]?[\d{1,}]?[\w]?[\+\-\*]?[\d{1,1}]?[\-\+\*]?[\d{1,}]?[\(]?\d*[\(\)]?[\d{1,}]?[\(\)]?\w?[\+\-\*]?\d*\s?\/\s?\d?[\-\.]?\d+[\s\+\-\*]{1,1}/g;
 
     if(arr.length >= 1){
@@ -49,12 +49,13 @@ const interpreter = () => {
     let input = document.querySelector("input")
     let interpretation = document.querySelector(".interpretation")
 
+    if(input.value == ""){
+        arr = []
+        i = 0
+    }
+
     input.addEventListener("input", (evt) => {
-        if(input.value == ""){
-            arr = []
-            i = 0
-        }
-        interpretation.innerHTML = getMatch(input.value)
+        interpretation.innerHTML = getMatch(input.value, arr)
     })
 }
 

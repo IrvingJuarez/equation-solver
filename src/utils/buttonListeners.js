@@ -1,15 +1,17 @@
 import tryAgain from "./tryAgain"
 import doMath from "./doMath"
 
-const isFieldEmpty = (value) => {
+const isFieldEmpty = (value, arr) => {
     let button = document.querySelector(".tryAgainButton")
     let interpretationField = document.querySelector(".interpretation")
+    let result = document.querySelector(".result")
     let opacity, border, cursor
     if(value === ""){
         opacity = "0.5"
         border = "transparent"
         cursor = "initial"
         interpretationField.textContent = "."
+        result.textContent = ""
         button.removeEventListener("click", tryAgain)
     }else{
         opacity = "1"
@@ -43,11 +45,11 @@ const equation = (str) => {
     mathButton.style.cursor = cursor
 }
 
-const buttonListeners = () => {
+const buttonListeners = (arr) => {
     let input = document.querySelector("input")
     input.addEventListener("input", () => {
         equation(input.value)
-        isFieldEmpty(input.value)
+        isFieldEmpty(input.value, arr)
     })
 }
 

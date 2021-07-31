@@ -72,9 +72,12 @@
     border-style: solid;
     border-color: transparent;
 }
-/* .result, .aftermath{
-    width: 100%;
-} */
+.result, .aftermath{
+    width: 90%;
+    margin-top: 20px;
+    font-family: var(--mainFont);
+    font-size: 1.6rem;
+}
 
 @media screen and (min-width: 700px){
     .equationsContainer{
@@ -100,5 +103,9 @@
         height: auto;
         padding: 12px;
         font-size: 2.2rem;
+    }
+    .result, .aftermath{
+        width: 100%;
+        font-size: 2.3rem;
     }
 }
