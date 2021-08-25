@@ -9,7 +9,7 @@ module.exports = {
         filename: "main.js"
     },
     resolve: {
-        extensions: [".js"]
+        extensions: [".js", ".jsx"]
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -26,8 +26,13 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"]
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: "babel-loader"
+            },
+            {
+                test: /\.(s*)css$/i,
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(svg|jpg)$/,
