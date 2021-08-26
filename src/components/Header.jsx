@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import logo from "../assets/images/logo.svg"
 import hamburgerBtn from "../assets/images/hamburgerButton.svg"
@@ -29,10 +30,10 @@ class Header extends React.Component{
                     </button>
                 </div>
                 <ul>
-                    <li><a href="#">Equations</a></li>
-                    <li><a href="#">Graphic calculator</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><Link to="/" onClick={this.closeNav}>Equations</Link></li>
+                    <li><Link to="/graphic-calculator" onClick={this.closeNav}>Graphic calculator</Link></li>
+                    <li><Link to="/about" onClick={this.closeNav}>About</Link></li>
+                    <li><Link to="/contact" onClick={this.closeNav}>Contact</Link></li>
                 </ul>
             </nav>
         )
@@ -70,7 +71,9 @@ class Header extends React.Component{
         return(
             <header>
                 <button className="header__logo" >
-                    <img src={logo} alt="Logo" type="button" />
+                    <Link to="/">
+                        <img src={logo} alt="Logo" type="button" />
+                    </Link>
                 </button>
 
                 {this.renderNav()}

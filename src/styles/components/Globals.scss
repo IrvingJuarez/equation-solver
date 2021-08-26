@@ -17,6 +17,9 @@ $mainShadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 html{
     font-size: 62.5%;
 }
+#root{
+    min-height: 100vh;
+}
 
 @mixin resetBtn{
     background: transparent;
