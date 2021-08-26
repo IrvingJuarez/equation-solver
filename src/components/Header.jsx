@@ -30,10 +30,27 @@ class Header extends React.Component{
                 </div>
                 <ul>
                     <li><a href="#">Equations</a></li>
+                    <li><a href="#">Graphic calculator</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
+        )
+    }
+
+    renderHamBtn = () => {
+        let nameClass
+
+        if(this.state.nav){
+            nameClass = "btn-hidden"
+        }else{
+            nameClass = "btn-visible"
+        }
+
+        return(
+            <button className={`header__hamburger-btn ${nameClass}`} onClick={this.openNav}>
+                <img src={hamburgerBtn} alt="Hamburger button" type="button" />
+            </button>
         )
     }
 
@@ -58,9 +75,7 @@ class Header extends React.Component{
 
                 {this.renderNav()}
 
-                <button className="header__hamburger-btn" onClick={this.openNav}>
-                    <img src={hamburgerBtn} alt="Hamburger button" type="button" />
-                </button>
+                {this.renderHamBtn()}
             </header>
         )
     }
