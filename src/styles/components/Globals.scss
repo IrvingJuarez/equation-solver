@@ -1,0 +1,50 @@
+$clearColor: #fff;
+$mainColor: #F4F4F4;
+$darkColorOn: #000000;
+$darkColorOff: rgba(0,0,0,0.75);
+$contrastColor: #10AFC8;
+
+$mainFont: "Montserrat", sans-serif;
+$secondFont: "Roboto", sans-serif;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+
+@mixin resetBtn{
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+      
+    &:hover {
+        background: transparent;
+        box-shadow: 0px 0px 0px transparent;
+        border: 0px solid transparent;
+        text-shadow: 0px 0px 0px transparent;
+    }
+      
+    &:active {
+        outline: none;
+        border: none;
+    }
+      
+    &:focus {
+        outline: 0;
+    }
+}
+
+@mixin headers{
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+    padding: 0 9px;
+}
