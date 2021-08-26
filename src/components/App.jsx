@@ -11,14 +11,14 @@ import "../styles/components/App.scss"
 
 const App = () => (
     <BrowserRouter>
-        <Layout />
-
-        <Switch>
-            <Route exact path="/" component={Equations} />
-            <Route exact path="/graphic-calculator" component={GraphicCalculator} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/contact" component={Contact} />
-        </Switch>
+        <Layout>
+            <Switch>
+                <Route exact path="/" component={Equations} />
+                <Route exact path="/graphic-calculator" component={GraphicCalculator} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/contact" component={Contact} />
+            </Switch>
+        </Layout>
     </BrowserRouter>
 )
 

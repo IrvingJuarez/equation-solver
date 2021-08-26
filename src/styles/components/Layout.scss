@@ -1,0 +1,12 @@
+main{
+    width: 100%;
+    min-height: calc(100vh - 50px);
+
+    background-color: $mainColor;
+}
+
+@media screen and (min-width: 750px){
+    main{
+        min-height: calc(100vh - 75px);
+    }
+}

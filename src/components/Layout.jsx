@@ -4,7 +4,9 @@ import Header from "./Header"
 const Layout = ({ children }) => (
     <React.Fragment>
         <Header />
-        {children}
+        <main>
+            {children}
+        </main>
     </React.Fragment>
 )
 
