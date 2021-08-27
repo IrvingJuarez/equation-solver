@@ -26,6 +26,11 @@
         border: none;
         outline-color: $contrastColor;
     }
+    p{
+        color: lighten($color: #000000, $amount: 0);
+        font-family: $mainFont;
+        font-size: 1.6rem;
+    }
     button{
         @include resetBtn;
 
@@ -51,6 +56,9 @@
         }
         input{
             padding: 12px 18px;
+            font-size: 2.2rem;
+        }
+        p{
             font-size: 2.2rem;
         }
         button{
