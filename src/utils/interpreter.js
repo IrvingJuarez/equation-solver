@@ -38,7 +38,7 @@ const getMatch = (string) => {
 }
 
 const interpreter = (str) => {
-    let regex = /[\w\-\+]*\s?\/\s?[\w\-\+]*/g;
+    let regex = /([\w\-\+]*|\([\w\-\+\s]*\))\s?\/\s?(\([\w\-\+\s]*\)|[\w\-\+]*)/g;
     let matches = []
     var values
 
