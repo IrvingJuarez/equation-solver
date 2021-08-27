@@ -1,6 +1,3 @@
-import React from "react"
-import Fraction from "../components/Fraction"
-
 const getMatch = (string) => {
     let regExp = /[\-]?[\d{1,}]?[\w]?[\+\-\*]?[\d{1,1}]?[\-\+\*]?[\d{1,}]?[\(]?\d*[\(\)]?[\d{1,}]?[\(\)]?\w?[\+\-\*]?\d*\s?\/\s?\d?[\-\.]?\d+[\s\+\-\*]{1,1}/g;
 
@@ -40,16 +37,27 @@ const getMatch = (string) => {
     return result
 }
 
-const interpreter = (string) => {
+const interpreter = (str) => {
     let regex = /\d\/\d/g;
-    let numbers = []
+    let matches = []
+    var values
 
-    // if(string.match(regex)){
-    //     let newString = string.split("").reverse().join("")
-    //     numbers = [...newString.split(/\s?\/?\s?/, 2)]
-    // }
+    return str.replaceAll(regex, e => {
+        matches.push(e)
 
-    return string.replaceAll(regex, <Fraction />)
+        matches.map( match => {
+            values = match.split("/")
+        })
+
+        return (`
+            <div>
+                <p>${values[0]}</p>
+                <hr />
+                <p>${values[1]}</p>
+            </div>
+        `)
+
+    })
 }
 
 export default interpreter

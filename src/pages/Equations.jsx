@@ -1,6 +1,6 @@
 import React from "react"
 import chosenPage from "../utils/chosenPage"
-// import interpreter from "../utils/interpreter"
+import interpreter from "../utils/interpreter"
 
 class Equations extends React.Component {
     constructor(props){
@@ -13,21 +13,7 @@ class Equations extends React.Component {
 
     handlerChange = e => {
         let interpretation = document.querySelector(".equations__interpretation")
-        let regex = /\d\/\d/g
-
-        interpretation.innerHTML = e.target.value.replaceAll(regex, () => {
-            let newString = e.target.value.split("").reverse().join("")
-            let numbers = [...newString.split(/\s?\/?\s?/, 2)]
-            // console.log(numbers)
-
-            return (`
-                <div>
-                    <p>${numbers[1]}</p>
-                    <hr />
-                    <p>${numbers[0]}</p>
-                </div>
-            `)
-        })
+        interpretation.innerHTML = interpreter(e.target.value)
     }
 
     render(){
