@@ -50,13 +50,23 @@ const getMatch = (string) => {
     return result
 }
 
-const interpreter = () => {
-    let input = document.querySelector("input")
-    let interpretation = document.querySelector(".interpretation")
+const interpreter = (string) => {
+    // let input = document.querySelector("input")
+    // let interpretation = document.querySelector(".interpretation")
 
-    input.addEventListener("input", (evt) => {
-        interpretation.innerHTML = getMatch(input.value)
-    })
+    // input.addEventListener("input", (evt) => {
+    //     interpretation.innerHTML = getMatch(input.value)
+    // })
+
+    let regex = /\d\/\d/g;
+    let numbers
+    if(string.match(regex)){
+        let newString = string.split("").reverse().join("")
+        numbers = [...newString.split(/\s?\/?\s?/, 2)]
+        console.log(numbers)
+    }
+
+    return string.replaceAll(regex, "match")
 }
 
 export default interpreter

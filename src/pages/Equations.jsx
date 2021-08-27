@@ -1,5 +1,6 @@
 import React from "react"
 import chosenPage from "../utils/chosenPage"
+import interpreter from "../utils/interpreter"
 
 class Equations extends React.Component {
     constructor(props){
@@ -14,8 +15,10 @@ class Equations extends React.Component {
     }
 
     handlerChange = e => {
+        let result = interpreter(e.target.value)
+
         this.setState({
-            interpretation: e.target.value
+            interpretation: result
         })
     }
 
