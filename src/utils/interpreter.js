@@ -1,15 +1,5 @@
-let arr = []
-let i = 0
-
-const div = (num1, num2) => {
-    return `
-    <div class="divition">
-        ${num1}
-        <hr>
-        ${num2}
-    </div>
-    `
-}
+import React from "react"
+import Fraction from "../components/Fraction"
 
 const getMatch = (string) => {
     let regExp = /[\-]?[\d{1,}]?[\w]?[\+\-\*]?[\d{1,1}]?[\-\+\*]?[\d{1,}]?[\(]?\d*[\(\)]?[\d{1,}]?[\(\)]?\w?[\+\-\*]?\d*\s?\/\s?\d?[\-\.]?\d+[\s\+\-\*]{1,1}/g;
@@ -59,14 +49,13 @@ const interpreter = (string) => {
     // })
 
     let regex = /\d\/\d/g;
-    let numbers
+    let numbers = []
     if(string.match(regex)){
         let newString = string.split("").reverse().join("")
         numbers = [...newString.split(/\s?\/?\s?/, 2)]
-        console.log(numbers)
     }
 
-    return string.replaceAll(regex, "match")
+    return string.replaceAll(regex, <Fraction firstNum={numbers[1]} secondNum={numbers[0]}/>)
 }
 
 export default interpreter
