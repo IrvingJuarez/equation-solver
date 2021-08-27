@@ -41,21 +41,15 @@ const getMatch = (string) => {
 }
 
 const interpreter = (string) => {
-    // let input = document.querySelector("input")
-    // let interpretation = document.querySelector(".interpretation")
-
-    // input.addEventListener("input", (evt) => {
-    //     interpretation.innerHTML = getMatch(input.value)
-    // })
-
     let regex = /\d\/\d/g;
     let numbers = []
-    if(string.match(regex)){
-        let newString = string.split("").reverse().join("")
-        numbers = [...newString.split(/\s?\/?\s?/, 2)]
-    }
 
-    return string.replaceAll(regex, <Fraction firstNum={numbers[1]} secondNum={numbers[0]}/>)
+    // if(string.match(regex)){
+    //     let newString = string.split("").reverse().join("")
+    //     numbers = [...newString.split(/\s?\/?\s?/, 2)]
+    // }
+
+    return string.replaceAll(regex, <Fraction />)
 }
 
 export default interpreter

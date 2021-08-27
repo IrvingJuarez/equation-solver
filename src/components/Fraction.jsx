@@ -1,11 +1,7 @@
 import React from "react"
 
 const Fraction = ({ firstNum, secondNum }) => (
-    <div>
-        <p>{firstNum}</p>
-        <hr />
-        <p>{secondNum}</p>
-    </div>
+    "Match"
 )
 
 export default Fraction

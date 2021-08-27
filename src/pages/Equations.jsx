@@ -15,10 +15,10 @@ class Equations extends React.Component {
     }
 
     handlerChange = e => {
-        let result = interpreter(e.target.value)
+        let value = interpreter(e.target.value)
 
         this.setState({
-            interpretation: result
+            interpretation: value
         })
     }
 
