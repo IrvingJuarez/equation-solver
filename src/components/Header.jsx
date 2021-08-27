@@ -30,10 +30,10 @@ class Header extends React.Component{
                     </button>
                 </div>
                 <ul>
-                    <li><Link to="/" onClick={this.closeNav}>Equations</Link></li>
-                    <li><Link to="/graphic-calculator" onClick={this.closeNav}>Graphic calculator</Link></li>
-                    <li><Link to="/about" onClick={this.closeNav}>About</Link></li>
-                    <li><Link to="/contact" onClick={this.closeNav}>Contact</Link></li>
+                    <li className="page iEquations"><Link to="/" onClick={this.closeNav}>Equations</Link></li>
+                    <li className="page iGraphic-calculator"><Link to="/graphic-calculator" onClick={this.closeNav}>Graphic calculator</Link></li>
+                    <li className="page iAbout"><Link to="/about" onClick={this.closeNav}>About</Link></li>
+                    <li className="page iContact"><Link to="/contact" onClick={this.closeNav}>Contact</Link></li>
                 </ul>
             </nav>
         )
@@ -68,6 +68,7 @@ class Header extends React.Component{
     }
 
     render(){
+
         return(
             <header>
                 <button className="header__logo" >
