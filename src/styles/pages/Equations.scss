@@ -54,7 +54,6 @@
         padding: 9px 0;
         border-radius: 15px;
         background-color: $contrastColor;
-        color: $clearColor;
 
         font-family: $secondFont;
         font-size: 1.9rem;
@@ -83,4 +82,11 @@
             font-size: 2rem;
         }
     }
+}
+
+.abled{
+    color: $clearColor;
+}
+.nonAbled{
+    color: rgba(255,255,255,0.5);
 }
