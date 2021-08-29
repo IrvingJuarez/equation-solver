@@ -20,24 +20,23 @@ class Equations extends React.Component {
 
     handlerChange = e => {
         let content = e.target.value
+        let result
 
-        if(content.match(regExp)){
-            this.setState({
-                enabled: true
-            })
+        if(content.match(regExp)){ 
+            result = true 
+        }else{ 
+            result = false 
         }
+
+        this.setState({ enabled: result })
         this.interpretation.innerHTML = interpreter(content)
     }
 
     renderBtn = () => {
         if(this.state.enabled){
-            return(
-                <button className="abled">Do the math</button>
-            )
+            return( <button className="abled">Do the math</button> )
         }else{
-            return(
-                <button className="nonAbled" disabled>Do the math</button>
-            )
+            return( <button className="nonAbled" disabled>Do the math</button> )
         }
 
     }
