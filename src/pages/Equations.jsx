@@ -7,7 +7,7 @@ const regExp = new RegExp("\=")
 class Equations extends React.Component {
     constructor(props){
         super(props)
-        this.state = { enabled: false }
+        this.state = { enabled: false, equation: "" }
 
         this.handlerChange = this.handlerChange.bind(this);
     }
@@ -18,9 +18,12 @@ class Equations extends React.Component {
         chosenPage("Equations")
     }
 
+    handleClick = () => {
+        console.log(this.state.equation)
+    }
+
     handlerChange = e => {
-        let content = e.target.value
-        let result
+        let result, content = e.target.value
 
         if(content.match(regExp)){ 
             result = true 
@@ -28,13 +31,13 @@ class Equations extends React.Component {
             result = false 
         }
 
-        this.setState({ enabled: result })
+        this.setState({ enabled: result, equation: content })
         this.interpretation.innerHTML = interpreter(content)
     }
 
     renderBtn = () => {
         if(this.state.enabled){
-            return( <button className="abled">Do the math</button> )
+            return( <button className="abled" onClick={this.handleClick}>Do the math</button> )
         }else{
             return( <button className="nonAbled" disabled>Do the math</button> )
         }
