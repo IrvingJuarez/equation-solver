@@ -1,4 +1,6 @@
 import React from "react"
+import Results from "../components/Results"
+
 import chosenPage from "../utils/chosenPage"
 import interpreter from "../utils/interpreter"
 
@@ -51,6 +53,7 @@ class Equations extends React.Component {
                 <input type="text" placeholder="E.g: 2x + 10 = 23x + 120" onChange={this.handlerChange}/>
                 <div className="equations__interpretation">.</div>
                 {this.renderBtn()}
+                <Results />
             </section>
         )
     }
