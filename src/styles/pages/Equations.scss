@@ -55,10 +55,16 @@
         padding: 9px 0;
         border-radius: 15px;
         background-color: $contrastColor;
-
+        
         font-family: $secondFont;
         font-size: 1.9rem;
         font-weight: 700;
+    }
+    &__doMathBtn {
+        margin-bottom: 12px;
+    }
+    &__tryAgainBtn{
+        margin-bottom: 30px;
     }
 
     @media screen and (min-width: 750px){
@@ -81,6 +87,9 @@
             width: 300px;
             padding: 12px 0;
             font-size: 2rem;
+        }
+        &__doMathBtn {
+            margin-bottom: 20px;
         }
     }
 }
