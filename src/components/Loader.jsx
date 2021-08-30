@@ -1,7 +1,10 @@
 import React from "react"
+import loaderGif from "../assets/gifs/loader.gif"
 
 const Loader = () => (
-    <h2>Loading...</h2>
+    <div className="loader">
+        <img src={loaderGif} alt="Loading..." />
+    </div>
 )
 
 export default Loader
