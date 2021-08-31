@@ -6,7 +6,7 @@ import chosenPage from "../utils/chosenPage"
 import interpreter from "../utils/interpreter"
 import doMath from "../utils/doMath"
 
-const regExp = new RegExp("\=")
+const regExp = /[\da-zA-Z]+\s?\=\s?[\da-zA-Z]+/
 
 class Equations extends React.Component {
     constructor(props){
@@ -28,7 +28,7 @@ class Equations extends React.Component {
     handleClick = () => {
         this.setState({ loading: true })
 
-        this.result = doMath(this.state.equation, this)
+        doMath(this.state.equation, this)
     }
 
     handlerChange = e => {
@@ -73,7 +73,9 @@ class Equations extends React.Component {
     }
 
     renderResults = () => {
-        if(this.state.loading === null){
+        if(this.state.error){
+            return( <h2 className="error-msg">Error: {this.state.error.message}</h2> )
+        }else if(this.state.loading === null){
             return( <div></div> )
         }else if(this.state.loading){
             return( <Loader />)

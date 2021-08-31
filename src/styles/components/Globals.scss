@@ -57,3 +57,12 @@ html{
         padding: 0 30px;
     }
 }
+
+.error-msg{
+    width: 90%;
+    font-size: 1.9rem;
+
+    @media screen and (min-width: 750px){
+        font-size: 2.4rem;
+    }
+}
