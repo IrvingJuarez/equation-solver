@@ -1,6 +1,6 @@
 const signRegexp = /[^\/\+\-\*\(\)\[\]\d\s\=a-zA-Z]/g
 const letterRegex = new RegExp("[a-z]", "ig");
-let signMatches, match, letterMatches = []
+let signMatches, match, letterMatches
 
 const gettingIndividualVars = (equation) => {
     while ((match = letterRegex.exec(equation)) !== null) {
@@ -10,7 +10,7 @@ const gettingIndividualVars = (equation) => {
     }
 }
 
-const resolveErrors = (equation, component, signMatches) => {
+const solveErrors = (equation, component, signMatches) => {
     if(signMatches.length == 0){
         gettingIndividualVars(equation)
         if(letterMatches.length == 1){
@@ -24,11 +24,12 @@ const resolveErrors = (equation, component, signMatches) => {
     }
 }
 
-const doMath = (equation, component) => {
+const resolveErrors = (equation, component) => {
+    letterMatches = []
     equation = equation.toLowerCase()
     signMatches = [...equation.matchAll(signRegexp)]
 
-    resolveErrors(equation, component, signMatches)
+    solveErrors(equation, component, signMatches)
 }
 
-export default doMath
+export default resolveErrors
