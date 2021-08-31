@@ -1,4 +1,4 @@
-const signRegexp = /[^\+\-\*\(\)\[\]\d\s\=a-zA-Z]/g
+const signRegexp = /[^\/\+\-\*\(\)\[\]\d\s\=a-zA-Z]/g
 const letterRegex = new RegExp("[a-z]", "ig");
 let signMatches, match, letterMatches = []
 
@@ -16,6 +16,8 @@ const resolveErrors = (equation, component, signMatches) => {
         if(letterMatches.length == 1){
             console.log("Continue, you got it")
             component.setState({ loading: false })
+        }else{
+            component.setState({ error: new Error("You are using more than one variable or any variable at all"), loading: false })
         }
     }else{
         component.setState({ error: new Error("You are using an invalid sign"), loading: false })
