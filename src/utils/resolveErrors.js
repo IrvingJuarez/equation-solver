@@ -1,3 +1,5 @@
+import doMath from "./doMath"
+
 const signRegexp = /[^\/\+\-\*\(\)\[\]\d\s\=a-zA-Z]/g
 const letterRegex = new RegExp("[a-z]", "ig");
 let signMatches, match, letterMatches
@@ -14,8 +16,7 @@ const solveErrors = (equation, component, signMatches) => {
     if(signMatches.length == 0){
         gettingIndividualVars(equation)
         if(letterMatches.length == 1){
-            console.log("Continue, you got it")
-            component.setState({ loading: false })
+            doMath(equation, component)
         }else{
             component.setState({ error: new Error("You are using more than one variable or any variable at all"), loading: false })
         }
