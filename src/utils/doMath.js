@@ -6,7 +6,14 @@ let numbersSide = 0
 
 const execNumbersSide = (varSide) => {
     exchangeArray = [...sides[numbersSide].matchAll(regexNumSide)]
-    newIsolatedSide = `${sides[varSide]} ${[...sides[numbersSide].matchAll(regexNumSide)]}`
+    exchangeArray.map(item => {
+        if(/\+/.test(item[0])){
+            item[0] = item[0].replace("+", "-")
+        }else if(/\-/.test(item[0])){
+            item[0] = item[0].replace("-", "+")
+        }
+    })
+    newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
     sides[varSide] = newIsolatedSide
 
     sides[numbersSide] = sides[numbersSide].replaceAll(regexNumSide, "")
