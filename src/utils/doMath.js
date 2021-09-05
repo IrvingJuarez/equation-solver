@@ -1,11 +1,12 @@
 const regexVars = new RegExp("[a-z]", "ig")
 const regexIsolatedSide = /[\+\-]?\s*\d+[^a-zA-Z]/ig;
 const regexNumSide = /\d+\s*[a-z]/ig;
-let sides, sideOneLenght, sideTwoLenght, newNumberSide
+let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide
 let numbersSide = 0
 
-const execNumbersSide = () => {
-
+const execNumbersSide = (varSide) => {
+    newIsolatedSide = `${sides[varSide]} ${[...sides[numbersSide].matchAll(regexNumSide)]}`
+    console.log(newIsolatedSide)
     // console.log(sides[numbersSide])
 }
 
@@ -25,7 +26,7 @@ const isolatingVar = (result) => {
     }
 
     execIsolatedSide(result)
-    execNumbersSide(numbersSide)
+    execNumbersSide(result)
 }
 
 const resolveWhichSide = (equation) => {
@@ -49,7 +50,13 @@ const resolveWhichSide = (equation) => {
     isolatingVar(result)
 }
 
+const addLeftSign = (str) => {
+    str = `+ ${str}`
+    return str.replace("=", "= +")
+}
+
 const doMath = (equation, component) => {
+    let equationWithSigns = addLeftSign(equation)
     resolveWhichSide(equation)
     component.setState({ loading: false })
 }
