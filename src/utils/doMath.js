@@ -4,8 +4,8 @@ const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray
 let numbersSide = 0
 
-const execNumbersSide = (varSide) => {
-    exchangeArray = [...sides[numbersSide].matchAll(regexNumSide)]
+const arreangingEquationSides = (side, regexSide) => {
+    exchangeArray = [...sides[side].matchAll(regexSide)]
     exchangeArray.map(item => {
         if(/\+/.test(item[0])){
             item[0] = item[0].replace("+", "-")
@@ -13,6 +13,10 @@ const execNumbersSide = (varSide) => {
             item[0] = item[0].replace("-", "+")
         }
     })
+}
+
+const execNumbersSide = (varSide) => {
+    arreangingEquationSides(numbersSide, regexNumSide)
     newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
     sides[varSide] = newIsolatedSide
 
@@ -23,14 +27,7 @@ const execNumbersSide = (varSide) => {
 }
 
 const execIsolatedSide = (varSide) => {
-    exchangeArray = [...sides[varSide].matchAll(regexIsolatedSide)]
-    exchangeArray.map(item => {
-        if(/\+/.test(item[0])){
-            item[0] = item[0].replace("+", "-")
-        }else if(/\-/.test(item[0])){
-            item[0] = item[0].replace("-", "+")
-        }
-    })
+    arreangingEquationSides(varSide, regexIsolatedSide)
     newNumberSide = `${sides[numbersSide]} ${exchangeArray}`
     newNumberSide = newNumberSide.replaceAll(",", "")
     sides[numbersSide] = newNumberSide
