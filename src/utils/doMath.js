@@ -1,10 +1,11 @@
 const regexVars = new RegExp("[a-z]", "ig")
 const regexIsolatedSide = /[\+\-]\s*\d+[\s\=\+\-]/ig;
-const regexNumSide = /[\+\-]\s*\d+\s*[a-z]/ig;
-let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide
+const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
+let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray
 let numbersSide = 0
 
 const execNumbersSide = (varSide) => {
+    exchangeArray = [...sides[numbersSide].matchAll(regexNumSide)]
     newIsolatedSide = `${sides[varSide]} ${[...sides[numbersSide].matchAll(regexNumSide)]}`
     sides[varSide] = newIsolatedSide
 
@@ -15,7 +16,15 @@ const execNumbersSide = (varSide) => {
 }
 
 const execIsolatedSide = (varSide) => {
-    newNumberSide = `${sides[numbersSide]} ${[...sides[varSide].matchAll(regexIsolatedSide)]}`
+    exchangeArray = [...sides[varSide].matchAll(regexIsolatedSide)]
+    exchangeArray.map(item => {
+        if(/\+/.test(item[0])){
+            item[0] = item[0].replace("+", "-")
+        }else if(/\-/.test(item[0])){
+            item[0] = item[0].replace("-", "+")
+        }
+    })
+    newNumberSide = `${sides[numbersSide]} ${exchangeArray}`
     newNumberSide = newNumberSide.replaceAll(",", "")
     sides[numbersSide] = newNumberSide
     // console.log(sides[numbersSide])
