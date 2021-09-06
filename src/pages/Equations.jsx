@@ -48,7 +48,7 @@ class Equations extends React.Component {
         this.input.value = ""
         this.interpretation.textContent = "."
         this.setState({
-            enabled: false, equation: "", loading: null, error: null
+            enabled: false, equation: "", loading: null, error: null, equationVarSide: "", equationNumSide: ""
         })
     }
 

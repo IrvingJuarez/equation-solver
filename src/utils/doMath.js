@@ -18,10 +18,18 @@ const arreangingEquationSides = (side, regexSide) => {
 const replacingSide = (sideId, replace) => {
     sides[sideId] = sides[sideId].replaceAll(replace, "")
     sides[sideId] = eval(sides[sideId])
+}
 
-    if(sideId != numbersSide){
-        sides[sideId] = `${sides[sideId]}${usedVar}`
-    }
+const wholeVarIsolation = (varSide, c) => {
+    sides[numbersSide] = `${sides[numbersSide]} / ${sides[varSide]}`
+    sides[numbersSide] = eval(sides[numbersSide])
+    sides[varSide] = usedVar
+
+    c.setState({
+        equationVarSide: sides[varSide],
+        equationNumSide: sides[numbersSide],
+        loading: false
+    })
 }
 
 const execNumbersSide = (varSide, c) => {
@@ -32,11 +40,7 @@ const execNumbersSide = (varSide, c) => {
     replacingSide(numbersSide, regexNumSide)
     replacingSide(varSide, usedVar)
 
-    c.setState({
-        equationVarSide: sides[varSide],
-        equationNumSide: sides[numbersSide],
-        loading: false
-    })
+    wholeVarIsolation(varSide, c)
 }
 
 const execIsolatedSide = (varSide) => {
