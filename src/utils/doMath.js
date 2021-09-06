@@ -23,7 +23,7 @@ const execNumbersSide = (varSide) => {
     sides[numbersSide] = sides[numbersSide].replaceAll(regexNumSide, "")
 
     console.log(sides[varSide])
-    console.log(sides[numbersSide])
+    console.log(eval(sides[numbersSide]))
 }
 
 const execIsolatedSide = (varSide) => {
