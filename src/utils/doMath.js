@@ -15,16 +15,18 @@ const arreangingEquationSides = (side, regexSide) => {
     })
 }
 
+const replacingSide = (sideId, replace) => {
+    sides[sideId] = sides[sideId].replaceAll(replace, "")
+    sides[sideId] = eval(sides[sideId])
+}
+
 const execNumbersSide = (varSide) => {
     arreangingEquationSides(numbersSide, regexNumSide)
     newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
     sides[varSide] = newIsolatedSide
 
-    sides[numbersSide] = sides[numbersSide].replaceAll(regexNumSide, "")
-    sides[numbersSide] = eval(sides[numbersSide])
-
-    sides[varSide] = sides[varSide].replaceAll(usedVar, "")
-    sides[varSide] = eval(sides[varSide])
+    replacingSide(numbersSide, regexNumSide)
+    replacingSide(varSide, usedVar)
 
     console.log(`${sides[varSide]}${usedVar}`)
     console.log(sides[numbersSide])
