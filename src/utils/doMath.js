@@ -1,7 +1,7 @@
 const regexVars = new RegExp("[a-z]", "ig")
 const regexIsolatedSide = /[\+\-]\s*\d+[\s\=\+\-]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
-let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray
+let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar
 let numbersSide = 0
 
 const arreangingEquationSides = (side, regexSide) => {
@@ -21,9 +21,13 @@ const execNumbersSide = (varSide) => {
     sides[varSide] = newIsolatedSide
 
     sides[numbersSide] = sides[numbersSide].replaceAll(regexNumSide, "")
+    sides[numbersSide] = eval(sides[numbersSide])
 
-    console.log(sides[varSide])
-    console.log(eval(sides[numbersSide]))
+    sides[varSide] = sides[varSide].replaceAll(usedVar, "")
+    sides[varSide] = eval(sides[varSide])
+
+    console.log(`${sides[varSide]}${usedVar}`)
+    console.log(sides[numbersSide])
 }
 
 const execIsolatedSide = (varSide) => {
@@ -34,7 +38,8 @@ const execIsolatedSide = (varSide) => {
     // console.log(sides[numbersSide])
 
     sides[varSide] = sides[varSide].replaceAll(regexIsolatedSide, "")
-    // console.log(sides[varSide])
+    usedVar = sides[varSide].match(regexVars)
+    usedVar = usedVar[0]
 }
 
 const isolatingVar = (result) => {
@@ -46,7 +51,7 @@ const isolatingVar = (result) => {
     execNumbersSide(result)
 }
 
-const resolveWhichSide = (equation) => {
+const solveEquation = (equation) => {
     let result
     sides = equation.split("=")
     sideOneLenght = [...sides[0].matchAll(regexVars)]
@@ -74,7 +79,7 @@ const addLeftSign = (str) => {
 
 const doMath = (equation, component) => {
     let equationWithSigns = addLeftSign(equation)
-    resolveWhichSide(equationWithSigns)
+    solveEquation(equationWithSigns)
     component.setState({ loading: false })
 }
 
