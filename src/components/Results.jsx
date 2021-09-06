@@ -1,8 +1,8 @@
 import React from "react"
 
-const Results = () => (
+const Results = ({ varSide, numSide }) => (
     <section className="results">
-        <h2 className="results__var-result">x = 50</h2>
+        <h2 className="results__var-result">{varSide} = {numSide}</h2>
 
         <article className="results__module">
             <button>See process</button>

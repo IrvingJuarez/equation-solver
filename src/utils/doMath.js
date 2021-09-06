@@ -18,9 +18,13 @@ const arreangingEquationSides = (side, regexSide) => {
 const replacingSide = (sideId, replace) => {
     sides[sideId] = sides[sideId].replaceAll(replace, "")
     sides[sideId] = eval(sides[sideId])
+
+    if(sideId != numbersSide){
+        sides[sideId] = `${sides[sideId]}${usedVar}`
+    }
 }
 
-const execNumbersSide = (varSide) => {
+const execNumbersSide = (varSide, c) => {
     arreangingEquationSides(numbersSide, regexNumSide)
     newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
     sides[varSide] = newIsolatedSide
@@ -28,8 +32,11 @@ const execNumbersSide = (varSide) => {
     replacingSide(numbersSide, regexNumSide)
     replacingSide(varSide, usedVar)
 
-    console.log(`${sides[varSide]}${usedVar}`)
-    console.log(sides[numbersSide])
+    c.setState({
+        equationVarSide: sides[varSide],
+        equationNumSide: sides[numbersSide],
+        loading: false
+    })
 }
 
 const execIsolatedSide = (varSide) => {
@@ -44,16 +51,16 @@ const execIsolatedSide = (varSide) => {
     usedVar = usedVar[0]
 }
 
-const isolatingVar = (result) => {
+const isolatingVar = (result, c) => {
     if(result === 0){
         numbersSide = 1
     }
 
-    execIsolatedSide(result)
-    execNumbersSide(result)
+    execIsolatedSide(result, c)
+    execNumbersSide(result, c)
 }
 
-const solveEquation = (equation) => {
+const solveEquation = (equation, c) => {
     let result
     sides = equation.split("=")
     sideOneLenght = [...sides[0].matchAll(regexVars)]
@@ -71,7 +78,7 @@ const solveEquation = (equation) => {
         }
     }
 
-    isolatingVar(result)
+    isolatingVar(result, c)
 }
 
 const addLeftSign = (str) => {
@@ -81,8 +88,7 @@ const addLeftSign = (str) => {
 
 const doMath = (equation, component) => {
     let equationWithSigns = addLeftSign(equation)
-    solveEquation(equationWithSigns)
-    component.setState({ loading: false })
+    solveEquation(equationWithSigns, component)
 }
 
 export default doMath

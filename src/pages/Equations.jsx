@@ -11,7 +11,7 @@ const regExp = /[\da-zA-Z]+\s?\=\s?[\da-zA-Z]+/
 class Equations extends React.Component {
     constructor(props){
         super(props)
-        this.state = { enabled: false, equation: "", loading: null, error: null }
+        this.state = { enabled: false, equation: "", loading: null, error: null, equationVarSide: "", equationNumSide: "" }
 
         this.handlerChange = this.handlerChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -80,7 +80,7 @@ class Equations extends React.Component {
         }else if(this.state.loading){
             return( <Loader />)
         }else{
-            return( <Results />)
+            return( <Results varSide={this.state.equationVarSide} numSide={this.state.equationNumSide}/>)
         }
     }
 
