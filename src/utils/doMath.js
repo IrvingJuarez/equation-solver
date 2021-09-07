@@ -2,7 +2,7 @@ const regexVars = new RegExp("[a-z]", "ig")
 const regexIsolatedSide = /[\+\-]\s*\d+[\s\=\+\-]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar
-let numbersSide = 0
+let numbersSide
 
 const arreangingEquationSides = (side, regexSide) => {
     exchangeArray = [...sides[side].matchAll(regexSide)]
@@ -91,6 +91,7 @@ const addLeftSign = (str) => {
 }
 
 const doMath = (equation, component) => {
+    numbersSide = 0
     let equationWithSigns = addLeftSign(equation)
     solveEquation(equationWithSigns, component)
 }
