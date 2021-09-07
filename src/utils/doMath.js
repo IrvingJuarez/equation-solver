@@ -1,4 +1,5 @@
 const regexVars = new RegExp("[a-z]", "ig")
+const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]\s*\d+[\s\=\+\-]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar
@@ -32,10 +33,14 @@ const wholeVarIsolation = (varSide, c) => {
     })
 }
 
+const replaceAloneVars = (varSide) => {
+    return varSide.replaceAll(aloneVar, "1")
+}
+
 const execNumbersSide = (varSide, c) => {
     arreangingEquationSides(numbersSide, regexNumSide)
     newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
-    sides[varSide] = newIsolatedSide
+    sides[varSide] = replaceAloneVars(newIsolatedSide)
 
     replacingSide(numbersSide, regexNumSide)
     replacingSide(varSide, usedVar)

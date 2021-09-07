@@ -6,7 +6,7 @@ import chosenPage from "../utils/chosenPage"
 import interpreter from "../utils/interpreter"
 import resolveErrors from "../utils/resolveErrors"
 
-const regExp = /[\da-zA-Z]+\s?\=\s?[\da-zA-Z]+/
+const regExp = /[\da-zA-Z]+\s?\=\s?[\da-zA-Z\-]+/
 
 class Equations extends React.Component {
     constructor(props){
