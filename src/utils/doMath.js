@@ -2,8 +2,7 @@ const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]?\s*\d+[\s\=\+\-\)]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
-let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar
-let numbersSide
+let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide
 
 const arreangingEquationSides = (side, regexSide) => {
     exchangeArray = [...sides[side].matchAll(regexSide)]
@@ -50,56 +49,65 @@ const replaceAloneVars = (varSide) => {
     })
 }
 
-const execNumbersSide = (varSide, c) => {
-    arreangingEquationSides(numbersSide, regexNumSide)
-    newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
-    sides[varSide] = replaceAloneVars(newIsolatedSide)
-
-    replacingSide(numbersSide, regexNumSide)
-    replacingSide(varSide, usedVar)
-    wholeVarIsolation(varSide, c)
-}
-
-const execIsolatedSide = (varSide) => {
-    arreangingEquationSides(varSide, regexIsolatedSide)
-    newNumberSide = `${sides[numbersSide]} ${exchangeArray}`
-    newNumberSide = newNumberSide.replaceAll(",", "")
-    sides[numbersSide] = newNumberSide
-    // console.log(sides[numbersSide])
-
-    sides[varSide] = sides[varSide].replaceAll(regexIsolatedSide, "")
-    usedVar = sides[varSide].match(regexVars)
+const executeVarSide = (newSide, oppSide, realSide, regex) => {
+    newSide = newSide.replaceAll(",", "")
+    sides[oppSide] = newSide
+    sides[realSide] = sides[realSide].replaceAll(regex, "")
+    usedVar = sides[realSide].match(regexVars)
     usedVar = usedVar[0]
 }
 
-const isolatingVar = (result, c) => {
-    if(result === 0){
-        numbersSide = 1
-    }
+const executeNumSide = (oppSide, newSide, realSide, regex, c) => {
+    sides[oppSide] = replaceAloneVars(newSide)
+    replacingSide(realSide, regex)
+    replacingSide(oppSide, usedVar)
+    wholeVarIsolation(oppSide, c)
+}
 
-    execIsolatedSide(result, c)
-    execNumbersSide(result, c)
+const execute = (realSide, regex, newSide, oppSide, c) => {
+    arreangingEquationSides(realSide, regex)
+    newSide = `${sides[oppSide]} ${exchangeArray}`
+
+    if(regex == regexIsolatedSide){
+        executeVarSide(newSide, oppSide, realSide, regex)
+    }else{
+        executeNumSide(oppSide, newSide, realSide, regex, c)
+    }
+}
+
+const execution = (side, c) => {
+    execute(side, regexIsolatedSide, newNumberSide, numbersSide)
+    execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
+}
+
+const isolatingVar = (side, c) => {
+    (side === 0) ? numbersSide = 1: null
+    execution(side, c)
+}
+
+const getRandom = () => {
+    if(sideOneLenght.length > sideTwoLenght.length){
+        return 0
+    }else if (sideTwoLenght.length > sideOneLenght.length){
+        return 1
+    }else{
+        return Math.floor(Math.random() * 2)
+    }
+}
+
+const getOneSide = (index) => {
+    return [...sides[index].matchAll(regexVars)]
+}
+
+const getBothSides = (equation) => {
+    sides = equation.split("=")
+    sideOneLenght = getOneSide(0)
+    sideTwoLenght = getOneSide(1)
 }
 
 const solveEquation = (equation, c) => {
-    let result
-    sides = equation.split("=")
-    sideOneLenght = [...sides[0].matchAll(regexVars)]
-    sideTwoLenght = [...sides[1].matchAll(regexVars)]
-
-    if(sideOneLenght.length > sideTwoLenght.length){
-        result = 0
-    }else if (sideTwoLenght.length > sideOneLenght.length){
-        result = 1
-    }else{
-        if(Math.floor(Math.random() * 2) == 1){
-            result = 0
-        }else{
-            result = 1
-        }
-    }
-
-    isolatingVar(result, c)
+    getBothSides(equation)
+    isolatingVar(getRandom(), c)
 }
 
 const addLeftSign = (str) => {
