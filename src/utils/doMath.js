@@ -1,6 +1,6 @@
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
-const regexIsolatedSide = /[\+\-]\s*\d+[\s\=\+\-]/ig;
+const regexIsolatedSide = /[\+\-]?\s*\d+[\s\=\+\-\)]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar
 let numbersSide
@@ -8,11 +8,13 @@ let numbersSide
 const arreangingEquationSides = (side, regexSide) => {
     exchangeArray = [...sides[side].matchAll(regexSide)]
     exchangeArray.map(item => {
+        console.log(item[0])
         if(/\+/.test(item[0])){
             item[0] = item[0].replace("+", "-")
         }else if(/\-/.test(item[0])){
             item[0] = item[0].replace("-", "+")
         }
+        console.log(item[0])
     })
 }
 
@@ -46,10 +48,11 @@ const execNumbersSide = (varSide, c) => {
     newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
     sides[varSide] = replaceAloneVars(newIsolatedSide)
 
-    replacingSide(numbersSide, regexNumSide)
-    replacingSide(varSide, usedVar)
-
-    wholeVarIsolation(varSide, c)
+    console.log(sides[varSide])
+    console.log(sides[numbersSide])
+    // replacingSide(numbersSide, regexNumSide)
+    // replacingSide(varSide, usedVar)
+    // wholeVarIsolation(varSide, c)
 }
 
 const execIsolatedSide = (varSide) => {
@@ -70,7 +73,7 @@ const isolatingVar = (result, c) => {
     }
 
     execIsolatedSide(result, c)
-    execNumbersSide(result, c)
+    // execNumbersSide(result, c)
 }
 
 const solveEquation = (equation, c) => {
