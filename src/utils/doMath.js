@@ -23,7 +23,9 @@ const replacingSide = (sideId, replace) => {
 
 const wholeVarIsolation = (varSide, c) => {
     sides[numbersSide] = `${sides[numbersSide]} / ${sides[varSide]}`
-    // sides[numbersSide] = eval(sides[numbersSide])
+    if(Number.isInteger(eval(sides[numbersSide]))){
+        sides[numbersSide] = eval(sides[numbersSide])
+    }
     sides[varSide] = usedVar
 
     c.setState({
