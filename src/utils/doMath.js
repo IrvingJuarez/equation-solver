@@ -8,13 +8,11 @@ let numbersSide
 const arreangingEquationSides = (side, regexSide) => {
     exchangeArray = [...sides[side].matchAll(regexSide)]
     exchangeArray.map(item => {
-        console.log(item[0])
         if(/\+/.test(item[0])){
             item[0] = item[0].replace("+", "-")
         }else if(/\-/.test(item[0])){
             item[0] = item[0].replace("-", "+")
         }
-        console.log(item[0])
     })
 }
 
@@ -24,9 +22,18 @@ const replacingSide = (sideId, replace) => {
 }
 
 const wholeVarIsolation = (varSide, c) => {
+    let originalNumSide = sides[numbersSide]
     sides[numbersSide] = `${sides[numbersSide]} / ${sides[varSide]}`
     if(Number.isInteger(eval(sides[numbersSide]))){
         sides[numbersSide] = eval(sides[numbersSide])
+    }else{
+        sides[numbersSide] = `
+        <div>
+            <p>${originalNumSide}</p>
+            <hr />
+            <p>${sides[varSide]}</p>
+        </div>
+        `
     }
     sides[varSide] = usedVar
 
@@ -48,11 +55,9 @@ const execNumbersSide = (varSide, c) => {
     newIsolatedSide = `${sides[varSide]} ${exchangeArray}`
     sides[varSide] = replaceAloneVars(newIsolatedSide)
 
-    console.log(sides[varSide])
-    console.log(sides[numbersSide])
-    // replacingSide(numbersSide, regexNumSide)
-    // replacingSide(varSide, usedVar)
-    // wholeVarIsolation(varSide, c)
+    replacingSide(numbersSide, regexNumSide)
+    replacingSide(varSide, usedVar)
+    wholeVarIsolation(varSide, c)
 }
 
 const execIsolatedSide = (varSide) => {
@@ -73,7 +78,7 @@ const isolatingVar = (result, c) => {
     }
 
     execIsolatedSide(result, c)
-    // execNumbersSide(result, c)
+    execNumbersSide(result, c)
 }
 
 const solveEquation = (equation, c) => {
