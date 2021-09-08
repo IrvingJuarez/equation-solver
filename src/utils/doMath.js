@@ -28,7 +28,7 @@ const wholeVarIsolation = (varSide, c) => {
         sides[numbersSide] = eval(sides[numbersSide])
     }else{
         sides[numbersSide] = `
-        <div>
+        <div class="results-fraction">
             <p>${originalNumSide}</p>
             <hr />
             <p>${sides[varSide]}</p>

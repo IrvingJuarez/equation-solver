@@ -1,17 +1,28 @@
 .results{
     width: 90%;
 
-    h2{
+    .results__var-result{
+        display: flex;
+        align-items: center;
         font-size: 2rem;
+    }
+    
+    &-fraction{
+        padding: 0 10px;
+        text-align: center
+    }
+
+    p, hr, &-fraction{
+        margin: 0;
     }
 
     button{
-        @include resetBtn;
         font-family: $mainFont;
-        font-size: 2rem;
-
+        font-size: 1.9rem;
+        
         cursor: pointer;
         margin: 0;
+        @include resetBtn;
     }
 
     &__module{
@@ -21,8 +32,8 @@
     }
 
     @media screen and (min-width: 750px){
-        button, h2{
-            font-size: 2.4rem;
+        button, .results__var-result{
+            font-size: 2.5rem;
         }
 
         & > *{
