@@ -34,7 +34,9 @@ const wholeVarIsolation = (varSide, c) => {
 }
 
 const replaceAloneVars = (varSide) => {
-    return varSide.replaceAll(aloneVar, "1")
+    return varSide.replaceAll(aloneVar, e => {
+        return e.replace(regexVars, "1")
+    })
 }
 
 const execNumbersSide = (varSide, c) => {
