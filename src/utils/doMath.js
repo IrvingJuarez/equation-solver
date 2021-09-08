@@ -20,20 +20,19 @@ const replacingSide = (sideId, replace) => {
     sides[sideId] = eval(sides[sideId])
 }
 
-const wholeVarIsolation = (varSide, c) => {
-    let originalNumSide = sides[numbersSide]
-    sides[numbersSide] = `${sides[numbersSide]} / ${sides[varSide]}`
-    if(Number.isInteger(eval(sides[numbersSide]))){
-        sides[numbersSide] = eval(sides[numbersSide])
+const resolveNumSide = (expectedResult, varSide) => {
+    if(Number.isInteger(expectedResult)){
+        return expectedResult
     }else{
-        sides[numbersSide] = `
-        <div class="results-fraction">
-            <p>${originalNumSide}</p>
-            <hr />
-            <p>${sides[varSide]}</p>
-        </div>
-        `
+        return `<div class="results-fraction"><p>${sides[numbersSide]}</p><hr /><p>${sides[varSide]}</p></div>`
     }
+}
+
+const wholeVarIsolation = (varSide, c) => {
+    let fraction = `${sides[numbersSide]} / ${sides[varSide]}`
+    let expectedResult = eval(fraction)
+
+    sides[numbersSide] = resolveNumSide(expectedResult, varSide)
     sides[varSide] = usedVar
 
     c.setState({
