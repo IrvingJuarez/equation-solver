@@ -7,19 +7,21 @@ const numComprobation = (varSide) => {
     if(varSideNum.length >= 1){
         return false
     }else{
-        let result = [varSide, (varSide == sideOne) ? sideTwo: sideOne]
-        console.log(result)
+        return [varSide, (varSide == sideOne) ? sideTwo: sideOne]
     }
 }
 
-const isEquationSolved = (equation, regexVars) => {
-    equation = equation.split("=")
+const settingSides = (equation) => {
     sideOne = equation[0]
     sideTwo = equation[1]
+}
 
-    sideOneVar = sideOne.match(regexVars) || []
-    sideTwoVar = sideTwo.match(regexVars) || []
+const gettingVars = (regex) => {
+    sideOneVar = sideOne.match(regex) || []
+    sideTwoVar = sideTwo.match(regex) || []
+}
 
+const evalLengthVars = () => {
     if(sideOneVar.length === 1 && sideTwoVar.length === 0){
         numComprobation(sideOne)
     }else if(sideTwoVar.length === 1 && sideOneVar.length === 0){
@@ -27,6 +29,13 @@ const isEquationSolved = (equation, regexVars) => {
     }else{
         return false
     }
+}
+
+const isEquationSolved = (equation, regexVars) => {
+    equation = equation.split("=")
+    settingSides(equation)
+    gettingVars(regexVars)
+    evalLengthVars()
 }
 
 export default isEquationSolved
