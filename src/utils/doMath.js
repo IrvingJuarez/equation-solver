@@ -58,8 +58,10 @@ const executeVarSide = (newSide, oppSide, realSide, regex) => {
 
 const executeNumSide = (oppSide, newSide, realSide, regex, c) => {
     sides[oppSide] = replaceAloneVars(newSide)
+
     replacingSide(realSide, regex)
     replacingSide(oppSide, usedVar)
+
     wholeVarIsolation(oppSide, c)
 }
 
