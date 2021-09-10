@@ -1,4 +1,5 @@
 import isEquationSolved from "./isEquationSolved"
+import reduceToMinimum from "./reduceToMinimum"
 
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
@@ -26,7 +27,7 @@ const resolveNumSide = (expectedResult, varSide) => {
     if(Number.isInteger(expectedResult)){
         return expectedResult
     }else{
-        return `<div class="results-fraction"><p>${sides[numbersSide]}</p><hr /><p>${sides[varSide]}</p></div>`
+        return reduceToMinimum(sides[numbersSide], sides[varSide])
     }
 }
 
@@ -121,7 +122,7 @@ const addLeftSign = (str) => {
 const resolveNumSide2 = (side) => {
     if(/\//ig.test(side)){
         side = side.split("/")
-        return `<div class="results-fraction"><p>${side[0]}</p><hr /><p>${side[1]}</p></div>`
+        return reduceToMinimum(side[0], side[1])
     }else{
         return side
     }
