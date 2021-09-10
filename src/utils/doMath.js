@@ -119,7 +119,7 @@ const addLeftSign = (str) => {
 }
 
 const doMath = (equation, component) => {
-    let comprobation = isEquationSolved()
+    isEquationSolved(equation, regexVars)
     numbersSide = 0
     let equationWithSigns = addLeftSign(equation)
     solveEquation(equationWithSigns, component)
