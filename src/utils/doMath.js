@@ -1,3 +1,5 @@
+import isEquationSolved from "./isEquationSolved"
+
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]?\s*\d+[\s\=\+\-\)]/ig;
@@ -117,6 +119,7 @@ const addLeftSign = (str) => {
 }
 
 const doMath = (equation, component) => {
+    let comprobation = isEquationSolved()
     numbersSide = 0
     let equationWithSigns = addLeftSign(equation)
     solveEquation(equationWithSigns, component)
