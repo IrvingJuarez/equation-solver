@@ -17,8 +17,16 @@ const reduce = () => {
     for(let value of dividers){
         if(divisibleBy(value)){
             divideBy(value)
-            return null
+            return true
         }
+    }
+
+    return false
+}
+
+const reduceLoop = () => {
+    if(reduce()){
+        reduceLoop()
     }
 }
 
@@ -26,7 +34,7 @@ const reduceToMinimum = (num1, num2) => {
     returnNum1 = num1
     returnNum2 = num2
 
-    reduce()
+    reduceLoop()
     return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div>`
 }
 
