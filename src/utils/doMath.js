@@ -118,10 +118,19 @@ const addLeftSign = (str) => {
     return str.replace("=", "= +")
 }
 
+const resolveNumSide2 = (side) => {
+    if(/\//ig.test(side)){
+        side = side.split("/")
+        return `<div class="results-fraction"><p>${side[0]}</p><hr /><p>${side[1]}</p></div>`
+    }else{
+        return side
+    }
+}
+
 const solved = (c) => {
     c.setState({
         equationVarSide: comprobation[0],
-        equationNumSide: comprobation[1],
+        equationNumSide: resolveNumSide2(comprobation[1]),
         loading: false
     })
 }
