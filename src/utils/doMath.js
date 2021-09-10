@@ -4,7 +4,7 @@ const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]?\s*\d+[\s\=\+\-\)]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
-let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide
+let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
 
 const arreangingEquationSides = (side, regexSide) => {
     exchangeArray = [...sides[side].matchAll(regexSide)]
@@ -118,11 +118,28 @@ const addLeftSign = (str) => {
     return str.replace("=", "= +")
 }
 
-const doMath = (equation, component) => {
-    isEquationSolved(equation, regexVars)
+const solved = (c) => {
+    c.setState({
+        equationVarSide: comprobation[0],
+        equationNumSide: comprobation[1],
+        loading: false
+    })
+}
+
+const nonSolved = (equation, component) => {
     numbersSide = 0
     let equationWithSigns = addLeftSign(equation)
     solveEquation(equationWithSigns, component)
+}
+
+const doMath = (equation, component) => {
+    comprobation = isEquationSolved(equation, regexVars)
+
+    if(comprobation){
+        solved(component)
+    }else{
+        nonSolved(equation, component)
+    }
 }
 
 export default doMath

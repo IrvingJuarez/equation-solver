@@ -1,13 +1,13 @@
 const regexDigits = /\d/ig
-let sideOne, sideTwo, sideOneVar, sideTwoVar
+let sideOne, sideTwo, sideOneVar, sideTwoVar, flag
 
 const numComprobation = (varSide) => {
     let varSideNum
     varSideNum = varSide.match(regexDigits) || []
     if(varSideNum.length >= 1){
-        return false
+        flag = false
     }else{
-        return [varSide, (varSide == sideOne) ? sideTwo: sideOne]
+        flag = [varSide, (varSide == sideOne) ? sideTwo: sideOne]
     }
 }
 
@@ -27,15 +27,18 @@ const evalLengthVars = () => {
     }else if(sideTwoVar.length === 1 && sideOneVar.length === 0){
         numComprobation(sideTwo)
     }else{
-        return false
+        flag = false
     }
 }
 
 const isEquationSolved = (equation, regexVars) => {
+    flag = false
     equation = equation.split("=")
     settingSides(equation)
     gettingVars(regexVars)
     evalLengthVars()
+
+    return flag
 }
 
 export default isEquationSolved
