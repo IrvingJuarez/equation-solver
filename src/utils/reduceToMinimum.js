@@ -1,4 +1,4 @@
-let returnNum1, returnNum2, dividers = [10, 7, 5, 3, 2]
+let zeroComprobation, returnNum1, returnNum2, dividers = [10, 7, 5, 3, 2]
 
 const divisibleBy = (num) => {
     if(returnNum1 % num === 0 && returnNum2 % num === 0){
@@ -30,12 +30,31 @@ const reduceLoop = () => {
     }
 }
 
-const reduceToMinimum = (num1, num2) => {
-    returnNum1 = num1
-    returnNum2 = num2
+const isThereAZero = (num1, num2) => {
+    switch(eval(num1 / num2)){
+        case 0:
+            return `Zero divided by something is zero`
+        break;
+        case Infinity:
+            return `undefined`
+        break;
+        default:
+            return false
+        break;
+    }
+}
 
-    reduceLoop()
-    return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div>`
+const reduceToMinimum = (num1, num2) => {
+    zeroComprobation = isThereAZero(num1, num2)
+
+    if(zeroComprobation != false){
+        return zeroComprobation
+    }else{
+        returnNum1 = num1
+        returnNum2 = num2
+        reduceLoop()
+        return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div>`
+    }
 }
 
 export default reduceToMinimum
