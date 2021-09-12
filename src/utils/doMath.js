@@ -1,11 +1,12 @@
 import isEquationSolved from "./isEquationSolved"
 import reduceToMinimum from "./reduceToMinimum"
+import loseParentheses from "./loseParentheses";
 
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]?\s*\d+[\s\=\+\-\)]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
-const regexParentheses = /\(.+\)/;
+const regexParentheses = /[\+\-]\s*\d+\(.+\)/;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
 
 const arreangingEquationSides = (side, regexSide) => {
@@ -80,19 +81,9 @@ const execute = (realSide, regex, newSide, oppSide, c) => {
     }
 }
 
-const byeParentheses = (side) => {
-    if(regexParentheses.test(sides[side])){
-        console.log(`${sides[side]} has parentheses`)
-    }else{
-        console.log(`${sides[side]} doesn't have parentheses`)
-    }
-
-    // return sides[side]
-}
-
 const gettingRidOfParentheses = (side) => {
-    byeParentheses(side)
-    byeParentheses(numbersSide)
+    sides[side] = loseParentheses(side)
+    sides[numbersSide] = loseParentheses(numbersSide)
 }
 
 const execution = (side, c) => {
@@ -171,3 +162,4 @@ const doMath = (equation, component) => {
 }
 
 export default doMath
+export { regexParentheses, sides }
