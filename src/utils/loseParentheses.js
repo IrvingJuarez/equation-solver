@@ -16,15 +16,20 @@ const pullApart = (betweenParentheses) => {
     console.log(nonVariables)
 }
 
-const obtainResult = (multiplier) => {
-    variables = variables.map(variable => {
-        result = `${result}${multiplier}${variable}`
+const concatenation = (multiplier, array, marker) => {
+    array = array.map(item => {
+        if(marker){
+            result = `${result}${multiplier}${item}`
+        }else{
+            flag = `${multiplier} * ${item}`
+            result = `${result} ${eval(flag)}`
+        }
     })
+}
 
-    nonVariables = nonVariables.map(nonVar => {
-        flag = `${multiplier} * ${nonVar}`
-        result = `${result} ${eval(flag)}`
-    })
+const obtainResult = (multiplier) => {
+    concatenation(multiplier, variables, true)
+    concatenation(multiplier, nonVariables, false)
 
     console.log(result)
 }
