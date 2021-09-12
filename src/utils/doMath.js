@@ -5,7 +5,7 @@ const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]?\s*\d+[\s\=\+\-\)]/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
-const regexParentheses = /\(.+\)/ig;
+const regexParentheses = /\(.+\)/;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
 
 const arreangingEquationSides = (side, regexSide) => {
@@ -80,28 +80,17 @@ const execute = (realSide, regex, newSide, oppSide, c) => {
     }
 }
 
-const isThereParentheses = (aSide) => {
-    if(regexParentheses.test(sides[aSide])){
-        return true
-    }else{
-        return false
-    }
-}
-
 const byeParentheses = (side) => {
-    if(isThereParentheses(side)){
+    if(regexParentheses.test(sides[side])){
         console.log(`${sides[side]} has parentheses`)
     }else{
-        console.log("There are no parentheses")
+        console.log(`${sides[side]} doesn't have parentheses`)
     }
 
     // return sides[side]
 }
 
 const gettingRidOfParentheses = (side) => {
-    console.log(sides[side])
-    console.log(sides[numbersSide])
-
     byeParentheses(side)
     byeParentheses(numbersSide)
 }
