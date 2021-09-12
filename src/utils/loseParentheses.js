@@ -11,9 +11,6 @@ const solveRegex = (regExp, str) => {
 const pullApart = (betweenParentheses) => {
     variables = solveRegex(regexVariables, betweenParentheses)
     nonVariables = solveRegex(regexNonvariables, betweenParentheses)
-
-    console.log(variables)
-    console.log(nonVariables)
 }
 
 const concatenation = (multiplier, array, marker) => {
@@ -22,7 +19,7 @@ const concatenation = (multiplier, array, marker) => {
             result = `${result}${multiplier}${item}`
         }else{
             flag = `${multiplier} * ${item}`
-            result = `${result} ${eval(flag)}`
+            result = `${result} +${eval(flag)}`
         }
     })
 }
@@ -30,8 +27,6 @@ const concatenation = (multiplier, array, marker) => {
 const obtainResult = (multiplier) => {
     concatenation(multiplier, variables, true)
     concatenation(multiplier, nonVariables, false)
-
-    console.log(result)
 }
 
 const solveSide = (side) => {
@@ -47,6 +42,7 @@ const loseParentheses = (side) => {
     if(regexParentheses.test(sides[side])){
         result = ""
         solveSide(side)
+        return result
     }
 
     return sides[side]

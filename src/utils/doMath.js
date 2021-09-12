@@ -83,14 +83,14 @@ const execute = (realSide, regex, newSide, oppSide, c) => {
 
 const gettingRidOfParentheses = (side) => {
     sides[side] = loseParentheses(side)
-    // sides[numbersSide] = loseParentheses(numbersSide)
+    sides[numbersSide] = loseParentheses(numbersSide)
 }
 
 const execution = (side, c) => {
     gettingRidOfParentheses(side)
-    
-    // execute(side, regexIsolatedSide, newNumberSide, numbersSide)
-    // execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
+
+    execute(side, regexIsolatedSide, newNumberSide, numbersSide)
+    execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
 }
 
 const isolatingVar = (side, c) => {
