@@ -2,18 +2,31 @@ import { regexParentheses, sides } from "./doMath"
 
 const regexVariables = /\s*\s?[a-z]/
 const regexNonvariables = /[\+\-]\s*\d+/
-let result
+let result, variables, nonVariables, flag
 
 const solveRegex = (regExp, str) => {
     return [...str.match(regExp)]
 }
 
 const pullApart = (betweenParentheses) => {
-    let variables = solveRegex(regexVariables, betweenParentheses)
-    let nonVariables = solveRegex(regexNonvariables, betweenParentheses)
+    variables = solveRegex(regexVariables, betweenParentheses)
+    nonVariables = solveRegex(regexNonvariables, betweenParentheses)
 
     console.log(variables)
     console.log(nonVariables)
+}
+
+const obtainResult = (multiplier) => {
+    variables = variables.map(variable => {
+        result = `${result}${multiplier}${variable}`
+    })
+
+    nonVariables = nonVariables.map(nonVar => {
+        flag = `${multiplier} * ${nonVar}`
+        result = `${result} ${eval(flag)}`
+    })
+
+    console.log(result)
 }
 
 const solveSide = (side) => {
@@ -22,10 +35,12 @@ const solveSide = (side) => {
     let multiplied = splitter[1]
 
     pullApart(multiplied)
+    obtainResult(multiplier)
 }
 
 const loseParentheses = (side) => {
     if(regexParentheses.test(sides[side])){
+        result = ""
         solveSide(side)
     }
 
