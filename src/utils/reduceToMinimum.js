@@ -1,4 +1,4 @@
-let zeroComprobation, returnNum1, returnNum2, dividers = [10, 7, 5, 3, 2]
+let zeroComprobation, returnNum1, returnNum2, decimal, dividers = [10, 7, 5, 3, 2]
 const regexNegativeSign = /\-/
 
 const divisibleBy = (num) => {
@@ -64,17 +64,26 @@ const loseNegativeSign = () => {
     }
 }
 
+const getDecimal = () => {
+    decimal = eval(returnNum1 / returnNum2).toFixed(2)
+}
+
+const nonZero = (num1, num2) => {
+    returnNum1 = num1
+    returnNum2 = num2
+    reduceLoop()
+    loseNegativeSign()
+    getDecimal()
+}
+
 const reduceToMinimum = (num1, num2) => {
     zeroComprobation = isThereAZero(num1, num2)
 
     if(zeroComprobation){
         return zeroComprobation
     }else{
-        returnNum1 = num1
-        returnNum2 = num2
-        reduceLoop()
-        loseNegativeSign()
-        return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div>`
+        nonZero(num1, num2)
+        return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div> <span>or</span> ${decimal}`
     }
 }
 

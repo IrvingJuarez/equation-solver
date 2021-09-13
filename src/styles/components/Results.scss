@@ -16,6 +16,12 @@
         margin: 0;
     }
 
+    span{
+        display: block;
+        font-family: $secondFont;
+        margin: 0 15px 0 10px;
+    }
+
     button{
         font-family: $mainFont;
         font-size: 1.9rem;
