@@ -1,7 +1,8 @@
 import { regexParentheses, sides } from "./doMath"
 
 const regexVariables = /\s*\s?[a-z]/
-const regexNonvariables = /[\+\-]\s*\d+/
+const regexNonvariables = /[\+\-]?\s*\d+/
+const regexAvoidBlankSpaces = /\d+\s+[a-z]/ig
 let result, variables, nonVariables, multiplication
 
 const solveRegex = (regExp, str) => {
@@ -28,9 +29,27 @@ const concatenation = (multiplier, array, marker) => {
     })
 }
 
+const replaceBlanks = () => {
+    let matches = [...result.match(regexAvoidBlankSpaces)]
+    
+    matches.map(match => {
+        result = result.replace(match, () => {
+            return match.replace(" ", "")
+        })
+    })
+}
+
+const avoidBlanks = () => {
+    if(regexAvoidBlankSpaces.test(result)){
+        replaceBlanks()
+    }
+}
+
 const obtainResult = (multiplier) => {
     concatenation(multiplier, variables, true)
     concatenation(multiplier, nonVariables, false)
+
+    avoidBlanks()
 }
 
 const solveSide = (side) => {
