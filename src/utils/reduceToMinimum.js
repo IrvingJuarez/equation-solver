@@ -65,7 +65,8 @@ const loseNegativeSign = () => {
 }
 
 const getDecimal = () => {
-    decimal = eval(returnNum1 / returnNum2).toFixed(2)
+    decimal = Math.round(eval(returnNum1 / returnNum2) * 100)
+    decimal /= 100
 }
 
 const nonZero = (num1, num2) => {
