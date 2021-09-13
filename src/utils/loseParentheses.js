@@ -2,7 +2,7 @@ import { regexParentheses, sides } from "./doMath"
 
 const regexVariables = /\s*\s?[a-z]/
 const regexNonvariables = /[\+\-]\s*\d+/
-let result, variables, nonVariables, flag
+let result, variables, nonVariables, multiplication
 
 const solveRegex = (regExp, str) => {
     return [...str.match(regExp)]
@@ -18,8 +18,12 @@ const concatenation = (multiplier, array, marker) => {
         if(marker){
             result = `${result}${multiplier}${item}`
         }else{
-            flag = `${multiplier} * ${item}`
-            result = `${result} +${eval(flag)}`
+            multiplication = eval(`${multiplier} * ${item}`)
+            if(!/[\-\+]/.test(multiplication)){
+                multiplication = `+ ${multiplication}`
+            }
+
+            result = `${result} ${multiplication}`
         }
     })
 }
