@@ -1,6 +1,6 @@
 import { regexParentheses, sides } from "./doMath"
 
-const regexVariables = /\s*\s?[a-z]/
+const regexVariables = /(\d+[A-z]{1,1}|\s*\s?[a-z])/ig;
 const regexNonvariables = /[\+\-]?\s*\d+/
 const regexAvoidBlankSpaces = /\d+\s+[a-z]/ig
 let result, variables, nonVariables, multiplication
@@ -11,6 +11,8 @@ const solveRegex = (regExp, str) => {
 
 const pullApart = (betweenParentheses) => {
     variables = solveRegex(regexVariables, betweenParentheses)
+    console.log(betweenParentheses)
+    console.log(variables)
     nonVariables = solveRegex(regexNonvariables, betweenParentheses)
 }
 
