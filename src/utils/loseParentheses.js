@@ -66,7 +66,7 @@ const obtainResult = (multiplier) => {
 }
 
 const solveSide = (side) => {
-    let splitter = sides[side].split("(")
+    let splitter = side.split("(")
     let multiplier = splitter[0]
     let multiplied = splitter[1]
 
@@ -79,9 +79,9 @@ const solveSide = (side) => {
 
 const loseParentheses = (side) => {
     if(regexParentheses.test(sides[side])){
-        return sides[side].replace(regexParentheses, () => {
+        return sides[side].replace(regexParentheses, e => {
             result = ""
-            solveSide(side)
+            solveSide(e)
             return result
         })
     }
