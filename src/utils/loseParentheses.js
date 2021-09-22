@@ -1,5 +1,6 @@
-import { regexParentheses, sides, regexVars } from "./doMath"
+import { sides, regexVars } from "./doMath"
 
+const regexParentheses = /[\+\-]?\s*\d*\(.+\)/;
 const regexVariables = /(\d+[A-z]{1,1}|\s*\s?[a-z])/ig;
 const regexMultiVars = /\d+[A-z]{1,1}/;
 const regexNonvariables = /(^\s*\d+|[\+\-]\s*\d+)/ig;
@@ -78,9 +79,11 @@ const solveSide = (side) => {
 
 const loseParentheses = (side) => {
     if(regexParentheses.test(sides[side])){
-        result = ""
-        solveSide(side)
-        return result
+        return sides[side].replace(regexParentheses, () => {
+            result = ""
+            solveSide(side)
+            return result
+        })
     }
 
     return sides[side]

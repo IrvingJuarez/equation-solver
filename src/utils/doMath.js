@@ -6,7 +6,6 @@ const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
 const regexIsolatedSide = /[\+\-]?\s*\d+([\s\=\+\-\)]|$)/ig;
 const regexNumSide = /[\+\-]\s*\d*\s*[a-z]/ig;
-const regexParentheses = /[\+\-]\s*\d*\(.+\)/;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
 
 const arreangingEquationSides = (side, regexSide) => {
@@ -162,4 +161,4 @@ const doMath = (equation, component) => {
 }
 
 export default doMath
-export { regexParentheses, sides, regexVars }
+export { sides, regexVars }
