@@ -7,15 +7,15 @@ const regexAvoidBlankSpaces = /\d+\s+[a-z]/ig;
 let result, variables, nonVariables, multiplication
 
 const solveRegex = (regExp, str) => {
+    if(regexMultiVars.test(str)){
+        str = "(" + str;
+    }
     return [...str.match(regExp)]
 }
 
 const pullApart = (betweenParentheses) => {
     variables = solveRegex(regexVariables, betweenParentheses)
     nonVariables = solveRegex(regexNonvariables, betweenParentheses)
-
-    // console.log(variables)
-    // console.log(nonVariables)
 }
 
 const resolveMultiVars = (item, multiplier) => {
