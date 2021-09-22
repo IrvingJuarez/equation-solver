@@ -88,8 +88,8 @@ const gettingRidOfParentheses = (side) => {
 const execution = (side, c) => {
     gettingRidOfParentheses(side)
 
-    execute(side, regexIsolatedSide, newNumberSide, numbersSide)
-    execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
+    // execute(side, regexIsolatedSide, newNumberSide, numbersSide)
+    // execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
 }
 
 const isolatingVar = (side, c) => {

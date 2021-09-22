@@ -5,6 +5,7 @@ const regexVariables = /(\d+[A-z]{1,1}|\s*\s?[a-z])/ig;
 const regexMultiVars = /\d+[A-z]{1,1}/;
 const regexNonvariables = /(^\s*\d+|[\+\-]\s*\d+)/ig;
 const regexAvoidBlankSpaces = /\d+\s+[a-z]/ig;
+const regexMultipliedBySign = /^[\+\-]?\s+$/;
 let result, variables, nonVariables, multiplication
 
 const solveRegex = (regExp, str) => {
@@ -66,15 +67,17 @@ const obtainResult = (multiplier) => {
 }
 
 const solveSide = (side) => {
+    console.log(side)
+
     let splitter = side.split("(")
-    let multiplier = splitter[0]
+    let multiplier = regexMultipliedBySign.test(splitter[0]) ? splitter[0].replace(/$/, "1") : splitter[0]
     let multiplied = splitter[1]
 
-    // console.log(multiplier)
-    // console.log(multiplied)
+    console.log(multiplier)
+    console.log(multiplied)
 
-    pullApart(multiplied)
-    obtainResult(multiplier)
+    // pullApart(multiplied)
+    // obtainResult(multiplier)
 }
 
 const loseParentheses = (side) => {
