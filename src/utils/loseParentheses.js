@@ -69,6 +69,9 @@ const solveSide = (side) => {
     let multiplier = splitter[0]
     let multiplied = splitter[1]
 
+    // console.log(multiplier)
+    // console.log(multiplied)
+
     pullApart(multiplied)
     obtainResult(multiplier)
 }
