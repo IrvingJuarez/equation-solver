@@ -2,7 +2,7 @@ import { regexParentheses, sides, regexVars } from "./doMath"
 
 const regexVariables = /(\d+[A-z]{1,1}|\s*\s?[a-z])/ig;
 const regexMultiVars = /\d+[A-z]{1,1}/;
-const regexNonvariables = /[\+\-]?\s*\d+/;
+const regexNonvariables = /(^\s*\d+|[\+\-]\s*\d+)/ig;
 const regexAvoidBlankSpaces = /\d+\s+[a-z]/ig;
 let result, variables, nonVariables, multiplication
 
