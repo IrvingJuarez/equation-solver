@@ -3,9 +3,10 @@ import { sides, regexVars } from "./doMath"
 const regexParentheses = /[\+\-]?\s*\d*\(.+\)/;
 const regexVariables = /(\d+[A-z]{1,1}|\s*\s?[a-z])/ig;
 const regexMultiVars = /\d+[A-z]{1,1}/;
-const regexNonvariables = /(^\s*\d+|[\+\-]\s*\d+)/ig;
+const regexNonvariables = /(^\s*\d+|[\+\-]\s*\d+)[^a-z]/;
+const regexNonvariables2 = /(^\s*\d+|[\+\-]\s*\d+)/ig;
 const regexAvoidBlankSpaces = /\d+\s+[a-z]/ig;
-const regexMultipliedBySign = /^[\+\-]?\s+$/;
+const regexMultipliedBySign = /^[\+\-]?\s*$/;
 let result, variables, nonVariables, multiplication
 
 const solveRegex = (regExp, str) => {
@@ -17,7 +18,11 @@ const solveRegex = (regExp, str) => {
 
 const pullApart = (betweenParentheses) => {
     variables = solveRegex(regexVariables, betweenParentheses)
-    nonVariables = solveRegex(regexNonvariables, betweenParentheses)
+    nonVariables = (regexNonvariables.test(betweenParentheses)) ? nonVariables = solveRegex(regexNonvariables2, betweenParentheses) : [];
+
+    // console.log(variables)
+    // console.log(nonVariables)
+    // console.log("__________")
 }
 
 const resolveMultiVars = (item, multiplier) => {
@@ -67,17 +72,12 @@ const obtainResult = (multiplier) => {
 }
 
 const solveSide = (side) => {
-    console.log(side)
-
     let splitter = side.split("(")
     let multiplier = regexMultipliedBySign.test(splitter[0]) ? splitter[0].replace(/$/, "1") : splitter[0]
     let multiplied = splitter[1]
 
-    console.log(multiplier)
-    console.log(multiplied)
-
-    // pullApart(multiplied)
-    // obtainResult(multiplier)
+    pullApart(multiplied)
+    obtainResult(multiplier)
 }
 
 const loseParentheses = (side) => {
