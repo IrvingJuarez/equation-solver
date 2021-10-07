@@ -1,6 +1,7 @@
 import isEquationSolved from "./isEquationSolved"
 import reduceToMinimum from "./reduceToMinimum"
 import loseParentheses from "./loseParentheses";
+import gettingRidOfSlashes from "./gettingRidOfSlashes";
 
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
@@ -87,9 +88,10 @@ const gettingRidOfParentheses = (side) => {
 
 const execution = (side, c) => {
     gettingRidOfParentheses(side)
+    gettingRidOfSlashes(side)
 
-    execute(side, regexIsolatedSide, newNumberSide, numbersSide)
-    execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
+    // execute(side, regexIsolatedSide, newNumberSide, numbersSide)
+    // execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
 }
 
 const isolatingVar = (side, c) => {
