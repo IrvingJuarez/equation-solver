@@ -86,9 +86,14 @@ const gettingRidOfParentheses = (side) => {
     sides[numbersSide] = loseParentheses(numbersSide)
 }
 
+const loseSlashes = (side) => {
+    sides[side] = gettingRidOfSlashes(side)
+    sides[numbersSide] = gettingRidOfSlashes(numbersSide)
+}
+
 const execution = (side, c) => {
     gettingRidOfParentheses(side)
-    gettingRidOfSlashes(side)
+    loseSlashes(side)
 
     // execute(side, regexIsolatedSide, newNumberSide, numbersSide)
     // execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
