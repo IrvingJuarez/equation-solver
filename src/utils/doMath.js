@@ -2,6 +2,7 @@ import isEquationSolved from "./isEquationSolved"
 import reduceToMinimum from "./reduceToMinimum"
 import loseParentheses from "./loseParentheses";
 import gettingRidOfSlashes from "./gettingRidOfSlashes";
+import loseWeirdDecimals from "./loseWeirdDecimals";
 
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\s\+\-\*\(][a-z]/ig;
@@ -91,12 +92,18 @@ const loseSlashes = (side) => {
     sides[numbersSide] = gettingRidOfSlashes(numbersSide)
 }
 
+const solveWeirdDecimals = (side) => {
+    sides[side] = loseWeirdDecimals(side)
+    sides[numbersSide] = loseWeirdDecimals(numbersSide)
+}
+
 const execution = (side, c) => {
+    solveWeirdDecimals(side)
     gettingRidOfParentheses(side)
     loseSlashes(side)
 
-    execute(side, regexIsolatedSide, newNumberSide, numbersSide)
-    execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
+    // execute(side, regexIsolatedSide, newNumberSide, numbersSide)
+    // execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
 }
 
 const isolatingVar = (side, c) => {
