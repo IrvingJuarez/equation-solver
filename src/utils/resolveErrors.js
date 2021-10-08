@@ -1,6 +1,6 @@
 import doMath from "./doMath"
 
-const signRegexp = /[^\/\+\-\*\(\)\[\]\d\s\=a-zA-Z]/g
+const signRegexp = /[^\/\+\-\*\(\)\[\]\d\s\=a-zA-Z\.]/g
 const letterRegex = new RegExp("[a-z]", "ig");
 let signMatches, match, letterMatches
 
