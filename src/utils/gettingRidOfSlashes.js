@@ -4,7 +4,7 @@ const regexSlashes = /[\+\-]\s*\d+\s*[a-z]?\s*\/\s*\d+[a-z]?/;
 const regexSlashesG = /[\+\-]\s*\d+\s*[a-z]?\s*\/\s*\d+[a-z]?/g;
 
 const withSign = (str) => {
-    let flag3 = /\+\-/.test( str )
+    let flag3 = /[\+\-]/.test( str )
 
     if( !flag3 ){
         str = `+ ${str}`
@@ -23,7 +23,9 @@ const solveMatch = (match) => {
         match = withSign(match)
         return `${ match }${tempContainer[0]}`
     }else{
-        return eval( String(match) );
+        match = eval( String(match) )
+        match = withSign(match)
+        return match;
     }
 }
 
@@ -32,8 +34,8 @@ const gettingRidOfSlashes = (side) => {
 
     if(flag){
         let matches = [...sides[side].matchAll(regexSlashesG)]
-        for(let i of matches){
-            sides[side] = sides[side].replace( i[0], solveMatch(i[0]) )
+        for(let match of matches){
+            sides[side] = sides[side].replace( match[0], solveMatch(match[0]) )
         }
     }
 
