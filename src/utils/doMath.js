@@ -75,17 +75,11 @@ const execute = (realSide, regex, newSide, oppSide, c) => {
     arreangingEquationSides(realSide, regex)
     newSide = `${sides[oppSide]} ${exchangeArray}`
 
-    console.log( sides[realSide] )
-    console.log( sides[oppSide] )
-
     if(regex == regexIsolatedSide){
         executeVarSide(newSide, oppSide, realSide, regex)
     }else{
         executeNumSide(oppSide, newSide, realSide, regex, c)
     }
-
-    console.log( sides[realSide] )
-    console.log( sides[oppSide] )
 }
 
 const gettingRidOfParentheses = (side) => {

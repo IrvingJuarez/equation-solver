@@ -77,6 +77,30 @@ const nonZero = (num1, num2) => {
     getDecimal()
 }
 
+const countDecimals = (param) => {
+    let flag
+    flag = /\./i.test(param)
+    if(flag){
+        let arr = param.split(".");
+        if( arr[1].length >= 4 ){
+            return true
+        }
+    }
+
+    return false
+}
+
+const countingDecimals = () => {
+    let flag = countDecimals( String(returnNum1) )
+    let flag2 = countDecimals( String(returnNum2) )
+
+    if( flag || flag2 ){
+        return true
+    }
+
+    return false
+}
+
 const reduceToMinimum = (num1, num2) => {
     zeroComprobation = isThereAZero(num1, num2)
 
@@ -84,7 +108,11 @@ const reduceToMinimum = (num1, num2) => {
         return zeroComprobation
     }else{
         nonZero(num1, num2)
-        return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div> <span>or</span> ${decimal}`
+        if( countingDecimals() ){
+            return decimal;
+        }else{
+            return `<div class="results-fraction"><p>${returnNum1}</p><hr /><p>${returnNum2}</p></div> <span>or</span> ${decimal}`
+        }
     }
 }
 
