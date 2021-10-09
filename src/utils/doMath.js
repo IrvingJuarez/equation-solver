@@ -5,7 +5,7 @@ import gettingRidOfSlashes from "./gettingRidOfSlashes";
 import loseWeirdDecimals from "./loseWeirdDecimals";
 
 const regexVars = new RegExp("[a-z]", "ig")
-const aloneVar = /[\s\+\-\*\(][a-z]/ig;
+const aloneVar = /[\+\-\*\(]\s*[a-z]/ig;
 const regexIsolatedSide = /[\+\-]\s*\d+([\s\=\+\-\)]|$)/ig;
 const regexNumSide = /[\+\-]\s*[\d\.]*\s*[a-z]/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
@@ -102,10 +102,7 @@ const execution = (side, c) => {
     gettingRidOfParentheses(side)
     loseSlashes(side)
 
-    console.log( sides[side] )
     execute(side, regexIsolatedSide, newNumberSide, numbersSide)
-    console.log( sides[side] )
-    debugger
     execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
 }
 
