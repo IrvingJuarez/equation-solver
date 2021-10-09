@@ -6,7 +6,7 @@ import loseWeirdDecimals from "./loseWeirdDecimals";
 
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\+\-\*\(]\s*[a-z]/ig;
-const regexIsolatedSide = /[\+\-]\s*\d+([\s\=\+\-\)]|$)/ig;
+const regexIsolatedSide = /[\+\-]\s*[\d\.]+([\s\=\+\-\)]|$)/ig;
 const regexNumSide = /[\+\-]\s*[\d\.]*\s*[a-z]\s*\/?\s*\d*/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
 
@@ -98,15 +98,10 @@ const solveWeirdDecimals = (side) => {
 }
 
 const execution = (side, c) => {
-    console.log( sides[side] )
-    console.log( sides[numbersSide] )
     solveWeirdDecimals(side)
     gettingRidOfParentheses(side)
     loseSlashes(side)
-
-    console.log( sides[side] )
-    console.log( sides[numbersSide] )
-
+    
     execute(side, regexIsolatedSide, newNumberSide, numbersSide)
     execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
 }
