@@ -17,10 +17,9 @@ const loseWeirdDecimals = (side) => {
         let match = [...sides[side].match(regexWeridD)]
         let rp = getNormalDecimals(match[0])
         sides[side] = `+ ${sides[side].replace(match[0], rp)}`
-        console.log( sides[side] )
     }
 
-    // return sides[side]
+    return sides[side]
 }
 
 export default loseWeirdDecimals;
