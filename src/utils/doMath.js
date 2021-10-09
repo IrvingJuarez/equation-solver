@@ -98,9 +98,14 @@ const solveWeirdDecimals = (side) => {
 }
 
 const execution = (side, c) => {
+    console.log( sides[side] )
+    console.log( sides[numbersSide] )
     solveWeirdDecimals(side)
     gettingRidOfParentheses(side)
     loseSlashes(side)
+
+    console.log( sides[side] )
+    console.log( sides[numbersSide] )
 
     execute(side, regexIsolatedSide, newNumberSide, numbersSide)
     execute(numbersSide, regexNumSide, newIsolatedSide, side, c)
