@@ -7,7 +7,7 @@ import loseWeirdDecimals from "./loseWeirdDecimals";
 const regexVars = new RegExp("[a-z]", "ig")
 const aloneVar = /[\+\-\*\(]\s*[a-z]/ig;
 const regexIsolatedSide = /[\+\-]\s*\d+([\s\=\+\-\)]|$)/ig;
-const regexNumSide = /[\+\-]\s*[\d\.]*\s*[a-z]/ig;
+const regexNumSide = /[\+\-]\s*[\d\.]*\s*[a-z]\s*\/?\s*\d*/ig;
 let sides, sideOneLenght, sideTwoLenght, newNumberSide, newIsolatedSide, exchangeArray, usedVar, numbersSide, comprobation
 
 const arreangingEquationSides = (side, regexSide) => {
@@ -75,11 +75,17 @@ const execute = (realSide, regex, newSide, oppSide, c) => {
     arreangingEquationSides(realSide, regex)
     newSide = `${sides[oppSide]} ${exchangeArray}`
 
+    console.log( sides[realSide] )
+    console.log( sides[oppSide] )
+
     if(regex == regexIsolatedSide){
         executeVarSide(newSide, oppSide, realSide, regex)
     }else{
         executeNumSide(oppSide, newSide, realSide, regex, c)
     }
+
+    console.log( sides[realSide] )
+    console.log( sides[oppSide] )
 }
 
 const gettingRidOfParentheses = (side) => {
